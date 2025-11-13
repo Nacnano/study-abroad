@@ -5,7 +5,6 @@ export interface University {
   programs: string[];
   researchAreas: string[];
   applicationDeadline: string;
-  priority: "High" | "Medium" | "Low";
   tuitionPerYear: string;
   livingCostPerYear: string;
   greRequired: string;
@@ -19,6 +18,8 @@ export interface University {
   fundingType?: "Fully Funded" | "Self-Funded" | "Limited Funding" | "Mixed";
   programType?: "PhD" | "MS" | "MPhil" | "MEng" | "Mixed";
 }
+
+export type Priority = "High" | "Medium" | "Low";
 
 export interface CountryInfo {
   name: string;

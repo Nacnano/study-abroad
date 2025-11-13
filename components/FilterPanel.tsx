@@ -119,33 +119,67 @@ export default function FilterPanel({
 
       {/* Priority */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-slate-700 mb-2">
+        <label className="block text-sm font-medium text-slate-700 mb-3">
           Priority ({selectedPriorities.length})
         </label>
         <div className="space-y-2">
-          {priorities.map((priority) => (
-            <label
-              key={priority}
-              className="flex items-center cursor-pointer group"
-            >
-              <input
-                type="checkbox"
-                checked={selectedPriorities.includes(priority)}
-                onChange={() =>
-                  toggleFilter(
-                    priority,
-                    selectedPriorities,
-                    setSelectedPriorities
-                  )
-                }
-                className="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500"
-              />
-              <span className="ml-2 text-sm text-slate-700 group-hover:text-slate-900">
-                {priority}
-              </span>
-            </label>
-          ))}
+          {priorities.map((priority) => {
+            const icon =
+              priority === "High" ? "⭐" : priority === "Medium" ? "🔶" : "🟢";
+            const bgColor =
+              priority === "High"
+                ? "bg-red-50 hover:bg-red-100"
+                : priority === "Medium"
+                ? "bg-yellow-50 hover:bg-yellow-100"
+                : "bg-green-50 hover:bg-green-100";
+            const timeLabel =
+              priority === "High"
+                ? "< 1 month"
+                : priority === "Medium"
+                ? "1-3 months"
+                : "> 3 months";
+
+            return (
+              <label
+                key={priority}
+                className={`flex items-center justify-between cursor-pointer group p-2 rounded-lg transition-colors ${bgColor} border ${
+                  priority === "High"
+                    ? "border-red-200"
+                    : priority === "Medium"
+                    ? "border-yellow-200"
+                    : "border-green-200"
+                }`}
+              >
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={selectedPriorities.includes(priority)}
+                    onChange={() =>
+                      toggleFilter(
+                        priority,
+                        selectedPriorities,
+                        setSelectedPriorities
+                      )
+                    }
+                    className="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500"
+                  />
+                  <span className="ml-2 text-sm font-medium text-slate-700 group-hover:text-slate-900 flex items-center gap-1">
+                    {icon} {priority}
+                  </span>
+                </div>
+                <span className="text-xs text-slate-500">{timeLabel}</span>
+              </label>
+            );
+          })}
         </div>
+        <p className="text-xs text-slate-500 mt-2 italic">
+          📅 Based on current date:{" "}
+          {new Date().toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          })}
+        </p>
       </div>
 
       {/* Funding Type */}

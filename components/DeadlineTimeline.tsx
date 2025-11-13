@@ -2,6 +2,10 @@
 
 import { useMemo } from "react";
 import { University } from "@/types/university";
+import {
+  calculatePriority,
+  getDaysUntilDeadline,
+} from "@/utils/calculatePriority";
 
 interface DeadlineTimelineProps {
   universities: University[];
@@ -63,56 +67,87 @@ export default function DeadlineTimeline({
               <div>
                 <h3 className="text-lg font-bold text-slate-900">{period}</h3>
                 <p className="text-sm text-slate-500">
-                  {unis.filter((u) => u.priority === "High").length} High
-                  Priority
+                  {
+                    unis.filter(
+                      (u) => calculatePriority(u.applicationDeadline) === "High"
+                    ).length
+                  }{" "}
+                  High Priority
                 </p>
               </div>
             </div>
 
             {/* Universities */}
             <div className="ml-12 space-y-3">
-              {unis.map((uni) => (
-                <div
-                  key={uni.id}
-                  className="p-5 bg-gradient-to-r from-slate-50 to-slate-100 rounded-xl border-2 border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h4 className="font-semibold text-slate-900">
-                          {uni.name}
-                        </h4>
-                        <span className="text-lg">
-                          {getCountryFlag(uni.country)}
-                        </span>
-                        {uni.priority === "High" && (
-                          <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded">
-                            HIGH
+              {unis.map((uni) => {
+                const priority = calculatePriority(uni.applicationDeadline);
+                const daysUntil = getDaysUntilDeadline(uni.applicationDeadline);
+
+                return (
+                  <div
+                    key={uni.id}
+                    className="p-5 bg-gradient-to-r from-slate-50 to-slate-100 rounded-xl border-2 border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1 flex-wrap">
+                          <h4 className="font-semibold text-slate-900">
+                            {uni.name}
+                          </h4>
+                          <span className="text-lg">
+                            {getCountryFlag(uni.country)}
                           </span>
-                        )}
-                      </div>
-                      <p className="text-sm text-slate-600 mb-2">
-                        {uni.programs.join(", ")}
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="text-xs text-slate-500">
-                          📅 {uni.applicationDeadline}
-                        </span>
-                        {uni.fundingType && (
-                          <span className="text-xs text-slate-500">
-                            💰 {uni.fundingType}
+                          {priority === "High" && (
+                            <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded flex items-center gap-1">
+                              ⭐ HIGH
+                              {daysUntil !== null && daysUntil > 0 && (
+                                <span className="opacity-75">
+                                  ({daysUntil}d)
+                                </span>
+                              )}
+                            </span>
+                          )}
+                          {priority === "Medium" && (
+                            <span className="px-2 py-0.5 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded flex items-center gap-1">
+                              🔶 MEDIUM
+                              {daysUntil !== null && daysUntil > 0 && (
+                                <span className="opacity-75">
+                                  ({daysUntil}d)
+                                </span>
+                              )}
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-sm text-slate-600 mb-2">
+                          {uni.programs.join(", ")}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          <span className="text-xs text-slate-500 flex items-center gap-1">
+                            📅 {uni.applicationDeadline}
+                            {daysUntil !== null &&
+                              daysUntil > 0 &&
+                              daysUntil <= 7 && (
+                                <span className="text-red-600 font-bold animate-pulse">
+                                  ⚠️
+                                </span>
+                              )}
                           </span>
-                        )}
-                        {uni.visaDuration && (
-                          <span className="text-xs text-slate-500">
-                            🛂 {uni.visaDuration}
-                          </span>
-                        )}
+                          {uni.fundingType && (
+                            <span className="text-xs text-slate-500">
+                              💰 {uni.fundingType}
+                            </span>
+                          )}
+                          {uni.visaDuration && (
+                            <span className="text-xs text-slate-500">
+                              🛂 {uni.visaDuration}
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         ))}
@@ -121,34 +156,37 @@ export default function DeadlineTimeline({
       {/* Legend */}
       <div className="mt-8 pt-6 border-t border-slate-200">
         <h4 className="text-sm font-semibold text-slate-700 mb-3">
-          Priority Triage Guide
+          🎯 Priority Calculation Guide
         </h4>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-          <div className="p-3 bg-red-50 rounded-lg">
-            <p className="font-semibold text-red-900 mb-1">
-              🔴 Triage 1: Nov-Dec 2025
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mb-4">
+          <div className="p-3 bg-red-50 rounded-lg border border-red-200">
+            <p className="font-semibold text-red-900 mb-1 flex items-center gap-1">
+              ⭐ High Priority
             </p>
             <p className="text-red-700 text-xs">
-              Top US/UK PhD programs, ETH Zurich, Toronto. Critical for funding!
+              Less than 1 month remaining. Apply immediately!
             </p>
           </div>
-          <div className="p-3 bg-yellow-50 rounded-lg">
-            <p className="font-semibold text-yellow-900 mb-1">
-              🟡 Triage 2: Jan-Feb 2026
+          <div className="p-3 bg-yellow-50 rounded-lg border border-yellow-200">
+            <p className="font-semibold text-yellow-900 mb-1 flex items-center gap-1">
+              🔶 Medium Priority
             </p>
             <p className="text-yellow-700 text-xs">
-              Oxford, Cambridge ACS, NUS. Secondary priority window.
+              1-3 months remaining. Start preparing now.
             </p>
           </div>
-          <div className="p-3 bg-green-50 rounded-lg">
-            <p className="font-semibold text-green-900 mb-1">
-              🟢 Triage 3: Mar+ 2026
+          <div className="p-3 bg-green-50 rounded-lg border border-green-200">
+            <p className="font-semibold text-green-900 mb-1 flex items-center gap-1">
+              🟢 Low Priority
             </p>
             <p className="text-green-700 text-xs">
-              German universities, UK round systems. More time available.
+              More than 3 months. Research and plan ahead.
             </p>
           </div>
         </div>
+        <p className="text-xs text-slate-500 text-center italic">
+          💡 Priority updates automatically based on the current date
+        </p>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { University } from "@/types/university";
+import { calculatePriority } from "@/utils/calculatePriority";
 
 interface StatsOverviewProps {
   universities: University[];
@@ -9,7 +10,9 @@ interface StatsOverviewProps {
 export default function StatsOverview({ universities }: StatsOverviewProps) {
   const stats = {
     total: universities.length,
-    highPriority: universities.filter((u) => u.priority === "High").length,
+    highPriority: universities.filter(
+      (u) => calculatePriority(u.applicationDeadline) === "High"
+    ).length,
     fullyFunded: universities.filter((u) => u.fundingType === "Fully Funded")
       .length,
     countries: new Set(universities.map((u) => u.country)).size,

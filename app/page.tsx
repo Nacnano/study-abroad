@@ -7,6 +7,7 @@ import FilterPanel from "@/components/FilterPanel";
 import StatsOverview from "@/components/StatsOverview";
 import DeadlineTimeline from "@/components/DeadlineTimeline";
 import Navigation from "@/components/Navigation";
+import { calculatePriority } from "@/utils/calculatePriority";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -31,9 +32,12 @@ export default function Home() {
       const matchesCountry =
         selectedCountries.length === 0 ||
         selectedCountries.includes(uni.country);
+
+      const priority = calculatePriority(uni.applicationDeadline);
       const matchesPriority =
         selectedPriorities.length === 0 ||
-        selectedPriorities.includes(uni.priority);
+        selectedPriorities.includes(priority);
+
       const matchesFunding =
         selectedFundingTypes.length === 0 ||
         (uni.fundingType && selectedFundingTypes.includes(uni.fundingType));

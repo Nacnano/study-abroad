@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import { University } from "@/types/university";
+import {
+  calculatePriority,
+  getDaysUntilDeadline,
+} from "@/utils/calculatePriority";
 
 interface UniversityCardProps {
   university: University;
@@ -9,6 +13,9 @@ interface UniversityCardProps {
 
 export default function UniversityCard({ university }: UniversityCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const priority = calculatePriority(university.applicationDeadline);
+  const daysUntil = getDaysUntilDeadline(university.applicationDeadline);
 
   const priorityColors = {
     High: "bg-red-100 text-red-800 border-red-200",
@@ -40,16 +47,22 @@ export default function UniversityCard({ university }: UniversityCardProps) {
             </div>
             <div className="flex flex-wrap gap-2 mb-3">
               <span
-                className={`px-3 py-1.5 rounded-full text-xs font-bold border shadow-sm ${
-                  priorityColors[university.priority]
-                }`}
+                className={`px-3 py-1.5 rounded-full text-xs font-bold border shadow-sm ${priorityColors[priority]}`}
+                title={
+                  daysUntil !== null
+                    ? `${daysUntil} days remaining`
+                    : "Unknown deadline"
+                }
               >
-                {university.priority === "High"
+                {priority === "High"
                   ? "⭐"
-                  : university.priority === "Medium"
+                  : priority === "Medium"
                   ? "🔶"
                   : "🟢"}{" "}
-                {university.priority}
+                {priority} Priority
+                {daysUntil !== null && daysUntil > 0 && (
+                  <span className="ml-1 opacity-75">({daysUntil}d)</span>
+                )}
               </span>
               {university.fundingType && (
                 <span
@@ -104,10 +117,35 @@ export default function UniversityCard({ university }: UniversityCardProps) {
         {/* Quick Info */}
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div>
-            <p className="text-xs text-slate-500 mb-1">Application Deadline</p>
+            <p className="text-xs text-slate-500 mb-1 flex items-center gap-1">
+              Application Deadline
+              {daysUntil !== null && daysUntil <= 7 && daysUntil > 0 && (
+                <span
+                  className="animate-pulse text-red-600"
+                  title="Very urgent!"
+                >
+                  ⚠️
+                </span>
+              )}
+            </p>
             <p className="text-sm font-semibold text-slate-900">
               {university.applicationDeadline}
             </p>
+            {daysUntil !== null && daysUntil > 0 && (
+              <p
+                className={`text-xs mt-1 font-medium ${
+                  daysUntil <= 7
+                    ? "text-red-600"
+                    : daysUntil <= 30
+                    ? "text-orange-600"
+                    : daysUntil <= 90
+                    ? "text-yellow-600"
+                    : "text-green-600"
+                }`}
+              >
+                {daysUntil === 1 ? "Tomorrow!" : `${daysUntil} days left`}
+              </p>
+            )}
           </div>
           <div>
             <p className="text-xs text-slate-500 mb-1">Tuition (Per Year)</p>
