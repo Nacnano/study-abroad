@@ -178,8 +178,8 @@ export default function CountryComparison() {
                   🏆 Most Prestigious
                 </h4>
                 <p className="text-sm text-slate-700">
-                  <strong>USA & UK:</strong> Home to world's top AI labs but
-                  requires significant financial investment for MS programs.
+                  <strong>USA & UK:</strong> Home to world&apos;s top AI labs
+                  but requires significant financial investment for MS programs.
                 </p>
               </div>
               <div className="bg-white rounded-lg p-4">
