@@ -1,183 +1,17 @@
 "use client";
 
 import Navigation from "@/components/Navigation";
-
-interface Scholarship {
-  name: string;
-  country: string;
-  targetDegree: string;
-  workExpRequired: boolean;
-  coverage: string[];
-  keyConditions: string[];
-  returnRequirement: boolean;
-  deadlineNote: string;
-  forFreshGrads: boolean;
-}
+import { scholarships } from "@/data/scholarships";
+import { Scholarship } from "@/types/scholarship";
+import {
+  SCHOLARSHIP_STRATEGY_NOTE,
+  SCHOLARSHIP_SECTIONS,
+  COMPARISON_COLUMNS,
+  getBestForText,
+  formatBooleanCell,
+} from "@/constants/scholarships";
 
 export default function ScholarshipsPage() {
-  const scholarships: Scholarship[] = [
-    {
-      name: "Fulbright Thai Graduate Scholarship (TGS)",
-      country: "USA",
-      targetDegree: "Master's or Doctoral",
-      workExpRequired: false,
-      coverage: [
-        "Full tuition",
-        "Monthly stipend",
-        "Health insurance",
-        "Travel costs",
-      ],
-      keyConditions: [
-        "Thai citizen",
-        "GPA >3.0 (MS) or >3.5 (PhD)",
-        "J-1 visa (2-year home residency rule, waivers possible)",
-      ],
-      returnRequirement: false,
-      deadlineNote: "Typically May-June for following year",
-      forFreshGrads: true,
-    },
-    {
-      name: "Chevening Scholarship",
-      country: "UK",
-      targetDegree: "1-Year Master's only",
-      workExpRequired: true,
-      coverage: [
-        "Full tuition",
-        "Monthly stipend",
-        "Travel costs",
-        "Arrival allowance",
-      ],
-      keyConditions: [
-        "Thai citizen",
-        "Minimum 2 years work experience (2,800 hours)",
-        "Mandatory 2-year return to Thailand",
-      ],
-      returnRequirement: true,
-      deadlineNote: "Usually early November",
-      forFreshGrads: false,
-    },
-    {
-      name: "DAAD Scholarship (EPOS)",
-      country: "Germany",
-      targetDegree: "Master's or PhD (Development-related)",
-      workExpRequired: true,
-      coverage: [
-        "Monthly stipend (€992 MS, €1,400 PhD)",
-        "Health insurance",
-        "Travel costs",
-        "Study allowance",
-      ],
-      keyConditions: [
-        "Thai citizen",
-        "Minimum 2 years professional experience",
-        "Development-related field",
-      ],
-      returnRequirement: true,
-      deadlineNote: "Varies by program, typically August-November",
-      forFreshGrads: false,
-    },
-    {
-      name: "Australia Awards",
-      country: "Australia",
-      targetDegree: "Master's (Coursework or Research)",
-      workExpRequired: true,
-      coverage: [
-        "Full tuition",
-        "Monthly stipend",
-        "Travel costs",
-        "Health coverage",
-        "Introductory academic program",
-      ],
-      keyConditions: [
-        "Thai citizen",
-        "Minimum 24 months work experience",
-        "Alignment with priority development fields",
-      ],
-      returnRequirement: true,
-      deadlineNote: "Opens March, closes April (for following year)",
-      forFreshGrads: false,
-    },
-    {
-      name: "MEXT Scholarship",
-      country: "Japan",
-      targetDegree: "Master's or PhD (Research Student)",
-      workExpRequired: false,
-      coverage: [
-        "Full tuition waiver",
-        "Monthly stipend",
-        "Travel costs",
-        "No tuition fees",
-      ],
-      keyConditions: [
-        "Thai citizen",
-        "GPA >3.0",
-        "English or Japanese proficiency",
-        "Must be recommended by Japanese embassy",
-      ],
-      returnRequirement: false,
-      deadlineNote: "Typically April-May for following year",
-      forFreshGrads: true,
-    },
-    {
-      name: "Gates Cambridge Scholarship",
-      country: "UK (Cambridge)",
-      targetDegree: "Master's or PhD at Cambridge",
-      workExpRequired: false,
-      coverage: [
-        "Full tuition",
-        "Maintenance allowance",
-        "Airfare",
-        "Additional discretionary funding",
-      ],
-      keyConditions: [
-        "Must be admitted to Cambridge",
-        "Exceptional academic merit",
-        "Leadership potential",
-        "Commitment to improving others' lives",
-      ],
-      returnRequirement: false,
-      deadlineNote: "December 2 (same as Cambridge funding deadline)",
-      forFreshGrads: true,
-    },
-    {
-      name: "ETH Excellence Scholarship (ESOP)",
-      country: "Switzerland (ETH Zurich)",
-      targetDegree: "Master's at ETH Zurich",
-      workExpRequired: false,
-      coverage: [
-        "Full tuition coverage",
-        "CHF 12,000 per semester living stipend",
-      ],
-      keyConditions: [
-        "Must be admitted to ETH MSc program",
-        "Top 10% of class",
-        "Outstanding academic performance",
-      ],
-      returnRequirement: false,
-      deadlineNote: "November 30 (same as application deadline)",
-      forFreshGrads: true,
-    },
-    {
-      name: "Swiss Government Excellence Scholarships",
-      country: "Switzerland",
-      targetDegree: "PhD or Postdoctoral only",
-      workExpRequired: false,
-      coverage: [
-        "Monthly stipend",
-        "Tuition waiver",
-        "Health insurance",
-        "Housing allowance",
-      ],
-      keyConditions: [
-        "Must be nominated by a Swiss host professor",
-        "Not available for Master's students",
-      ],
-      returnRequirement: false,
-      deadlineNote: "Varies, typically September-November",
-      forFreshGrads: true,
-    },
-  ];
-
   const freshGradScholarships = scholarships.filter((s) => s.forFreshGrads);
   const workExpScholarships = scholarships.filter((s) => !s.forFreshGrads);
 
@@ -202,39 +36,53 @@ export default function ScholarshipsPage() {
           {/* Strategic Note */}
           <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-lg mb-8">
             <h3 className="text-lg font-bold text-amber-900 mb-2">
-              ⚠️ Critical Strategic Note
+              {SCHOLARSHIP_STRATEGY_NOTE.title}
             </h3>
             <p className="text-amber-800 mb-3">
-              Scholarships requiring work experience often include{" "}
-              <strong>mandatory return-to-home-country clauses</strong>. This
-              conflicts with post-study work visa opportunities.
+              {
+                SCHOLARSHIP_STRATEGY_NOTE.warning.split(
+                  "mandatory return-to-home-country clauses"
+                )[0]
+              }
+              <strong>mandatory return-to-home-country clauses</strong>
+              {
+                SCHOLARSHIP_STRATEGY_NOTE.warning.split(
+                  "mandatory return-to-home-country clauses"
+                )[1]
+              }
             </p>
             <div className="space-y-2 text-sm text-amber-900">
               <p>
-                <strong>For Long-Term International Career:</strong>
+                <strong>
+                  {SCHOLARSHIP_STRATEGY_NOTE.recommendations.title}
+                </strong>
               </p>
               <ul className="list-disc ml-6 space-y-1">
-                <li>
-                  Target fully-funded PhD programs (no return requirement)
-                </li>
-                <li>
-                  Or scholarships without return clauses (Fulbright TGS, MEXT,
-                  Gates Cambridge, ETH ESOP)
-                </li>
+                {SCHOLARSHIP_STRATEGY_NOTE.recommendations.options.map(
+                  (option, idx) => (
+                    <li key={idx}>{option}</li>
+                  )
+                )}
               </ul>
             </div>
           </div>
 
           {/* For Fresh Graduates */}
           <section className="mb-12">
-            <div className="flex items-center gap-3 mb-6 p-4 bg-gradient-to-r from-emerald-50 to-green-50 rounded-2xl border border-emerald-200">
-              <span className="text-4xl">🎓</span>
+            <div
+              className={`flex items-center gap-3 mb-6 p-4 bg-gradient-to-r ${SCHOLARSHIP_SECTIONS.freshGrads.bgGradient} rounded-2xl border ${SCHOLARSHIP_SECTIONS.freshGrads.borderColor}`}
+            >
+              <span className="text-4xl">
+                {SCHOLARSHIP_SECTIONS.freshGrads.icon}
+              </span>
               <div>
-                <h2 className="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
-                  For Fresh Graduates
+                <h2
+                  className={`text-3xl font-bold bg-gradient-to-r ${SCHOLARSHIP_SECTIONS.freshGrads.gradient} bg-clip-text text-transparent`}
+                >
+                  {SCHOLARSHIP_SECTIONS.freshGrads.title}
                 </h2>
                 <p className="text-emerald-700 font-medium">
-                  No work experience required
+                  {SCHOLARSHIP_SECTIONS.freshGrads.subtitle}
                 </p>
               </div>
             </div>
@@ -248,14 +96,20 @@ export default function ScholarshipsPage() {
 
           {/* For Experienced Professionals */}
           <section>
-            <div className="flex items-center gap-3 mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-200">
-              <span className="text-4xl">💼</span>
+            <div
+              className={`flex items-center gap-3 mb-6 p-4 bg-gradient-to-r ${SCHOLARSHIP_SECTIONS.experienced.bgGradient} rounded-2xl border ${SCHOLARSHIP_SECTIONS.experienced.borderColor}`}
+            >
+              <span className="text-4xl">
+                {SCHOLARSHIP_SECTIONS.experienced.icon}
+              </span>
               <div>
-                <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  For Experienced Professionals
+                <h2
+                  className={`text-3xl font-bold bg-gradient-to-r ${SCHOLARSHIP_SECTIONS.experienced.gradient} bg-clip-text text-transparent`}
+                >
+                  {SCHOLARSHIP_SECTIONS.experienced.title}
                 </h2>
                 <p className="text-blue-700 font-medium">
-                  Requires 2+ years work experience
+                  {SCHOLARSHIP_SECTIONS.experienced.subtitle}
                 </p>
               </div>
             </div>
@@ -277,64 +131,56 @@ export default function ScholarshipsPage() {
                 <table className="w-full text-sm">
                   <thead className="bg-slate-50 border-b border-slate-200">
                     <tr>
-                      <th className="px-4 py-3 text-left font-semibold text-slate-900">
-                        Scholarship
-                      </th>
-                      <th className="px-4 py-3 text-left font-semibold text-slate-900">
-                        Country
-                      </th>
-                      <th className="px-4 py-3 text-center font-semibold text-slate-900">
-                        Work Exp?
-                      </th>
-                      <th className="px-4 py-3 text-center font-semibold text-slate-900">
-                        Return Req?
-                      </th>
-                      <th className="px-4 py-3 text-left font-semibold text-slate-900">
-                        Best For
-                      </th>
+                      {COMPARISON_COLUMNS.map((col) => (
+                        <th
+                          key={col.key}
+                          className={`px-4 py-3 text-${col.align} font-semibold text-slate-900`}
+                        >
+                          {col.label}
+                        </th>
+                      ))}
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200">
-                    {scholarships.map((s, idx) => (
-                      <tr
-                        key={idx}
-                        className={idx % 2 === 0 ? "bg-white" : "bg-slate-50"}
-                      >
-                        <td className="px-4 py-3 font-medium text-slate-900">
-                          {s.name}
-                        </td>
-                        <td className="px-4 py-3 text-slate-700">
-                          {s.country}
-                        </td>
-                        <td className="px-4 py-3 text-center">
-                          {s.workExpRequired ? (
-                            <span className="text-amber-600">✓ Yes</span>
-                          ) : (
-                            <span className="text-emerald-600">✗ No</span>
-                          )}
-                        </td>
-                        <td className="px-4 py-3 text-center">
-                          {s.returnRequirement ? (
-                            <span className="text-red-600 font-semibold">
-                              ✓ Yes
+                    {scholarships.map((s, idx) => {
+                      const workExpCell = formatBooleanCell(
+                        s.workExpRequired,
+                        "workExp"
+                      );
+                      const returnReqCell = formatBooleanCell(
+                        s.returnRequirement,
+                        "returnReq"
+                      );
+
+                      return (
+                        <tr
+                          key={idx}
+                          className={idx % 2 === 0 ? "bg-white" : "bg-slate-50"}
+                        >
+                          <td className="px-4 py-3 font-medium text-slate-900">
+                            {s.name}
+                          </td>
+                          <td className="px-4 py-3 text-slate-700">
+                            {s.country}
+                          </td>
+                          <td className="px-4 py-3 text-center">
+                            <span className={workExpCell.colorClass}>
+                              {workExpCell.text}
                             </span>
-                          ) : (
-                            <span className="text-emerald-600">✗ No</span>
-                          )}
-                        </td>
-                        <td className="px-4 py-3 text-slate-700">
-                          {s.returnRequirement ? (
+                          </td>
+                          <td className="px-4 py-3 text-center">
+                            <span className={returnReqCell.colorClass}>
+                              {returnReqCell.text}
+                            </span>
+                          </td>
+                          <td className="px-4 py-3 text-slate-700">
                             <span className="text-xs">
-                              Career development in Thailand
+                              {getBestForText(s.returnRequirement)}
                             </span>
-                          ) : (
-                            <span className="text-xs">
-                              International career flexibility
-                            </span>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
