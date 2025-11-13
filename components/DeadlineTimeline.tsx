@@ -74,7 +74,7 @@ export default function DeadlineTimeline({
               {unis.map((uni) => (
                 <div
                   key={uni.id}
-                  className="p-4 bg-slate-50 rounded-lg border border-slate-200 hover:bg-slate-100 transition-colors"
+                  className="p-5 bg-gradient-to-r from-slate-50 to-slate-100 rounded-xl border-2 border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">

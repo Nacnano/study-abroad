@@ -24,38 +24,44 @@ export default function UniversityCard({ university }: UniversityCardProps) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
-      <div className="p-6">
+    <div className="bg-white rounded-2xl shadow-md border border-slate-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+      <div className="p-6 relative">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-bl-full"></div>
         {/* Header */}
-        <div className="flex items-start justify-between mb-4">
+        <div className="flex items-start justify-between mb-4 relative z-10">
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
-              <h3 className="text-xl font-bold text-slate-900">
-                {university.name}
-              </h3>
-              <span className="text-2xl">
+              <span className="text-3xl">
                 {getCountryFlag(university.country)}
               </span>
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+                {university.name}
+              </h3>
             </div>
             <div className="flex flex-wrap gap-2 mb-3">
               <span
-                className={`px-3 py-1 rounded-full text-xs font-semibold border ${
+                className={`px-3 py-1.5 rounded-full text-xs font-bold border shadow-sm ${
                   priorityColors[university.priority]
                 }`}
               >
-                {university.priority} Priority
+                {university.priority === "High"
+                  ? "⭐"
+                  : university.priority === "Medium"
+                  ? "🔶"
+                  : "🟢"}{" "}
+                {university.priority}
               </span>
               {university.fundingType && (
                 <span
-                  className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                  className={`px-3 py-1.5 rounded-full text-xs font-bold shadow-sm ${
                     fundingColors[university.fundingType]
                   }`}
                 >
-                  {university.fundingType}
+                  💰 {university.fundingType}
                 </span>
               )}
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700">
-                {university.country}
+              <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-slate-100 to-slate-200 text-slate-700 shadow-sm">
+                📍 {university.country}
               </span>
             </div>
           </div>
@@ -63,14 +69,14 @@ export default function UniversityCard({ university }: UniversityCardProps) {
 
         {/* Programs */}
         <div className="mb-4">
-          <h4 className="text-sm font-semibold text-slate-700 mb-2">
-            Programs
+          <h4 className="text-sm font-bold text-slate-700 mb-2 flex items-center gap-2">
+            <span className="text-lg">🎯</span> Programs
           </h4>
           <div className="flex flex-wrap gap-2">
             {university.programs.map((program, idx) => (
               <span
                 key={idx}
-                className="px-2 py-1 bg-blue-50 text-blue-700 rounded text-sm"
+                className="px-3 py-1.5 bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 rounded-lg text-sm font-medium border border-blue-200"
               >
                 {program}
               </span>
@@ -80,14 +86,14 @@ export default function UniversityCard({ university }: UniversityCardProps) {
 
         {/* Research Areas */}
         <div className="mb-4">
-          <h4 className="text-sm font-semibold text-slate-700 mb-2">
-            Research Areas
+          <h4 className="text-sm font-bold text-slate-700 mb-2 flex items-center gap-2">
+            <span className="text-lg">🔬</span> Research Areas
           </h4>
           <div className="flex flex-wrap gap-2">
             {university.researchAreas.map((area, idx) => (
               <span
                 key={idx}
-                className="px-2 py-1 bg-purple-50 text-purple-700 rounded text-sm"
+                className="px-3 py-1.5 bg-gradient-to-r from-purple-50 to-purple-100 text-purple-700 rounded-lg text-sm font-medium border border-purple-200"
               >
                 {area}
               </span>
@@ -127,19 +133,21 @@ export default function UniversityCard({ university }: UniversityCardProps) {
 
         {/* Visa Info */}
         {university.visaType && (
-          <div className="mb-4 p-3 bg-indigo-50 rounded-lg">
+          <div className="mb-4 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl border border-indigo-200">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs text-indigo-600 font-semibold mb-1">
-                  Post-Study Visa
-                </p>
-                <p className="text-sm text-indigo-900">{university.visaType}</p>
-              </div>
-              <div className="text-right">
-                <p className="text-xs text-indigo-600 font-semibold mb-1">
-                  Duration
+                <p className="text-xs text-indigo-600 font-bold mb-1 flex items-center gap-1">
+                  <span>🛂</span> Post-Study Visa
                 </p>
                 <p className="text-sm text-indigo-900 font-semibold">
+                  {university.visaType}
+                </p>
+              </div>
+              <div className="text-right">
+                <p className="text-xs text-indigo-600 font-bold mb-1 flex items-center justify-end gap-1">
+                  <span>⏱️</span> Duration
+                </p>
+                <p className="text-lg text-indigo-900 font-bold">
                   {university.visaDuration}
                 </p>
               </div>
@@ -150,9 +158,9 @@ export default function UniversityCard({ university }: UniversityCardProps) {
         {/* Toggle Button */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="w-full py-2 px-4 text-sm font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors"
+          className="w-full py-3 px-4 text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-[1.02]"
         >
-          {isExpanded ? "▲ Show Less" : "▼ Show More Details"}
+          {isExpanded ? "▲ Show Less Details" : "▼ Show More Details"}
         </button>
 
         {/* Expanded Content */}

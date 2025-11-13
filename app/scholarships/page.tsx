@@ -184,14 +184,15 @@ export default function ScholarshipsPage() {
   return (
     <>
       <Navigation />
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
         {/* Header */}
-        <header className="bg-white shadow-sm border-b border-slate-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <h1 className="text-3xl font-bold text-slate-900">
-              Scholarship Guide for Thai Students
+        <header className="relative bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-2xl overflow-hidden">
+          <div className="absolute inset-0 bg-black/10"></div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <h1 className="text-4xl font-bold mb-2 drop-shadow-lg">
+              💰 Scholarship Guide for Thai Students
             </h1>
-            <p className="text-slate-600 mt-1">
+            <p className="text-blue-100 text-lg">
               Major international scholarships and funding opportunities
             </p>
           </div>
@@ -226,13 +227,15 @@ export default function ScholarshipsPage() {
 
           {/* For Fresh Graduates */}
           <section className="mb-12">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-3xl">🎓</span>
+            <div className="flex items-center gap-3 mb-6 p-4 bg-gradient-to-r from-emerald-50 to-green-50 rounded-2xl border border-emerald-200">
+              <span className="text-4xl">🎓</span>
               <div>
-                <h2 className="text-2xl font-bold text-slate-900">
+                <h2 className="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
                   For Fresh Graduates
                 </h2>
-                <p className="text-slate-600">No work experience required</p>
+                <p className="text-emerald-700 font-medium">
+                  No work experience required
+                </p>
               </div>
             </div>
 
@@ -245,13 +248,13 @@ export default function ScholarshipsPage() {
 
           {/* For Experienced Professionals */}
           <section>
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-3xl">💼</span>
+            <div className="flex items-center gap-3 mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-200">
+              <span className="text-4xl">💼</span>
               <div>
-                <h2 className="text-2xl font-bold text-slate-900">
+                <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                   For Experienced Professionals
                 </h2>
-                <p className="text-slate-600">
+                <p className="text-blue-700 font-medium">
                   Requires 2+ years work experience
                 </p>
               </div>
@@ -345,24 +348,24 @@ export default function ScholarshipsPage() {
 
 function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 hover:shadow-md transition-shadow">
+    <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
       {/* Header */}
       <div className="mb-4">
         <div className="flex items-start justify-between mb-2">
-          <h3 className="text-lg font-bold text-slate-900">
+          <h3 className="text-xl font-bold text-slate-900">
             {scholarship.name}
           </h3>
           {scholarship.returnRequirement && (
-            <span className="px-2 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded">
+            <span className="px-3 py-1 bg-red-100 text-red-700 text-xs font-bold rounded-full shadow-sm">
               Return Required
             </span>
           )}
         </div>
         <div className="flex items-center gap-2">
-          <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded">
+          <span className="px-3 py-1.5 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 text-xs font-bold rounded-lg shadow-sm">
             {scholarship.country}
           </span>
-          <span className="px-2 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded">
+          <span className="px-3 py-1.5 bg-gradient-to-r from-slate-100 to-slate-200 text-slate-700 text-xs font-bold rounded-lg shadow-sm">
             {scholarship.targetDegree}
           </span>
         </div>
@@ -370,8 +373,8 @@ function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
 
       {/* Coverage */}
       <div className="mb-4">
-        <h4 className="text-sm font-semibold text-slate-700 mb-2">
-          💰 Coverage
+        <h4 className="text-sm font-bold text-slate-900 mb-2 flex items-center gap-2">
+          <span className="text-lg">💰</span> Coverage
         </h4>
         <ul className="space-y-1">
           {scholarship.coverage.map((item, idx) => (

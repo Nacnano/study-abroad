@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { CountryInfo } from '@/types/university';
+import { CountryInfo } from "@/types/university";
 
 interface FilterPanelProps {
   searchQuery: string;
@@ -23,50 +23,70 @@ export default function FilterPanel({
   setSelectedPriorities,
   selectedFundingTypes,
   setSelectedFundingTypes,
-  countryInfo
+  countryInfo,
 }: FilterPanelProps) {
-  const countries = ['USA', 'Canada', 'UK', 'Switzerland', 'Germany', 'Singapore', 'Australia', 'South Korea'];
-  const priorities = ['High', 'Medium', 'Low'];
-  const fundingTypes = ['Fully Funded', 'Limited Funding', 'Self-Funded', 'Mixed'];
+  const countries = [
+    "USA",
+    "Canada",
+    "UK",
+    "Switzerland",
+    "Germany",
+    "Singapore",
+    "Australia",
+    "South Korea",
+  ];
+  const priorities = ["High", "Medium", "Low"];
+  const fundingTypes = [
+    "Fully Funded",
+    "Limited Funding",
+    "Self-Funded",
+    "Mixed",
+  ];
 
-  const toggleFilter = (value: string, selected: string[], setter: (values: string[]) => void) => {
+  const toggleFilter = (
+    value: string,
+    selected: string[],
+    setter: (values: string[]) => void
+  ) => {
     if (selected.includes(value)) {
-      setter(selected.filter(v => v !== value));
+      setter(selected.filter((v) => v !== value));
     } else {
       setter([...selected, value]);
     }
   };
 
   const clearAllFilters = () => {
-    setSearchQuery('');
+    setSearchQuery("");
     setSelectedCountries([]);
     setSelectedPriorities([]);
     setSelectedFundingTypes([]);
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 sticky top-6">
+    <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 sticky top-6 backdrop-blur-sm">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-semibold text-slate-900">Filters</h3>
+        <h3 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent flex items-center gap-2">
+          <span className="text-2xl">🔍</span> Filters
+        </h3>
         <button
           onClick={clearAllFilters}
-          className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+          className="text-sm text-blue-600 hover:text-blue-700 font-bold px-3 py-1.5 rounded-lg hover:bg-blue-50 transition-all"
         >
-          Clear All
+          ✕ Clear
         </button>
       </div>
 
       {/* Search */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-slate-700 mb-2">
-          Search
+        <label className="flex items-center gap-2 text-sm font-bold text-slate-700 mb-2">
+          <span>🔎</span> Search
         </label>
         <input
           type="text"
           placeholder="University, program, research area..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-4 py-3 border-2 border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all shadow-sm hover:shadow-md"
         />
       </div>
 
@@ -76,12 +96,17 @@ export default function FilterPanel({
           Countries ({selectedCountries.length})
         </label>
         <div className="space-y-2 max-h-64 overflow-y-auto">
-          {countries.map(country => (
-            <label key={country} className="flex items-center cursor-pointer group">
+          {countries.map((country) => (
+            <label
+              key={country}
+              className="flex items-center cursor-pointer group"
+            >
               <input
                 type="checkbox"
                 checked={selectedCountries.includes(country)}
-                onChange={() => toggleFilter(country, selectedCountries, setSelectedCountries)}
+                onChange={() =>
+                  toggleFilter(country, selectedCountries, setSelectedCountries)
+                }
                 className="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500"
               />
               <span className="ml-2 text-sm text-slate-700 group-hover:text-slate-900">
@@ -98,12 +123,21 @@ export default function FilterPanel({
           Priority ({selectedPriorities.length})
         </label>
         <div className="space-y-2">
-          {priorities.map(priority => (
-            <label key={priority} className="flex items-center cursor-pointer group">
+          {priorities.map((priority) => (
+            <label
+              key={priority}
+              className="flex items-center cursor-pointer group"
+            >
               <input
                 type="checkbox"
                 checked={selectedPriorities.includes(priority)}
-                onChange={() => toggleFilter(priority, selectedPriorities, setSelectedPriorities)}
+                onChange={() =>
+                  toggleFilter(
+                    priority,
+                    selectedPriorities,
+                    setSelectedPriorities
+                  )
+                }
                 className="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500"
               />
               <span className="ml-2 text-sm text-slate-700 group-hover:text-slate-900">
@@ -120,12 +154,21 @@ export default function FilterPanel({
           Funding Type ({selectedFundingTypes.length})
         </label>
         <div className="space-y-2">
-          {fundingTypes.map(type => (
-            <label key={type} className="flex items-center cursor-pointer group">
+          {fundingTypes.map((type) => (
+            <label
+              key={type}
+              className="flex items-center cursor-pointer group"
+            >
               <input
                 type="checkbox"
                 checked={selectedFundingTypes.includes(type)}
-                onChange={() => toggleFilter(type, selectedFundingTypes, setSelectedFundingTypes)}
+                onChange={() =>
+                  toggleFilter(
+                    type,
+                    selectedFundingTypes,
+                    setSelectedFundingTypes
+                  )
+                }
                 className="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500"
               />
               <span className="ml-2 text-sm text-slate-700 group-hover:text-slate-900">
@@ -143,9 +186,17 @@ export default function FilterPanel({
             {countryInfo[selectedCountries[0]].name} Info
           </h4>
           <div className="space-y-2 text-xs text-blue-800">
-            <p><strong>Visa:</strong> {countryInfo[selectedCountries[0]].visaProgram}</p>
-            <p><strong>Duration:</strong> {countryInfo[selectedCountries[0]].visaDuration}</p>
-            <p className="mt-2 text-xs leading-relaxed">{countryInfo[selectedCountries[0]].strategicVerdict}</p>
+            <p>
+              <strong>Visa:</strong>{" "}
+              {countryInfo[selectedCountries[0]].visaProgram}
+            </p>
+            <p>
+              <strong>Duration:</strong>{" "}
+              {countryInfo[selectedCountries[0]].visaDuration}
+            </p>
+            <p className="mt-2 text-xs leading-relaxed">
+              {countryInfo[selectedCountries[0]].strategicVerdict}
+            </p>
           </div>
         </div>
       )}

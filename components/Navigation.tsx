@@ -25,12 +25,15 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="bg-white border-b border-slate-200">
+    <nav className="bg-gradient-to-r from-slate-900 to-slate-800 border-b border-slate-700 shadow-2xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl">🎓</span>
-            <Link href="/" className="text-xl font-bold text-slate-900">
+          <div className="flex items-center gap-3">
+            <span className="text-3xl">🎓</span>
+            <Link
+              href="/"
+              className="text-2xl font-bold text-white hover:text-blue-300 transition-colors"
+            >
               Study Abroad AI/ML
             </Link>
           </div>
@@ -39,10 +42,10 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-xl text-sm font-bold transition-all duration-300 ${
                   pathname === link.href
-                    ? "bg-blue-100 text-blue-900"
-                    : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                    ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg"
+                    : "text-slate-300 hover:bg-slate-700 hover:text-white"
                 }`}
               >
                 {link.label}
