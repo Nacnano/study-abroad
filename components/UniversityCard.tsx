@@ -6,6 +6,13 @@ import {
   calculatePriority,
   getDaysUntilDeadline,
 } from "@/utils/calculatePriority";
+import {
+  PRIORITY_CONFIG,
+  getUrgencyColor,
+  isVeryUrgent,
+  formatDaysRemaining,
+} from "@/constants/priorities";
+import { FUNDING_COLORS, getCountryFlag } from "@/constants/ui";
 
 interface UniversityCardProps {
   university: University;
@@ -16,19 +23,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
 
   const priority = calculatePriority(university.applicationDeadline);
   const daysUntil = getDaysUntilDeadline(university.applicationDeadline);
-
-  const priorityColors = {
-    High: "bg-red-100 text-red-800 border-red-200",
-    Medium: "bg-yellow-100 text-yellow-800 border-yellow-200",
-    Low: "bg-green-100 text-green-800 border-green-200",
-  };
-
-  const fundingColors = {
-    "Fully Funded": "bg-emerald-100 text-emerald-800",
-    "Limited Funding": "bg-amber-100 text-amber-800",
-    "Self-Funded": "bg-rose-100 text-rose-800",
-    Mixed: "bg-blue-100 text-blue-800",
-  };
+  const priorityConfig = PRIORITY_CONFIG[priority];
 
   return (
     <div className="bg-white rounded-2xl shadow-md border border-slate-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
@@ -47,19 +42,14 @@ export default function UniversityCard({ university }: UniversityCardProps) {
             </div>
             <div className="flex flex-wrap gap-2 mb-3">
               <span
-                className={`px-3 py-1.5 rounded-full text-xs font-bold border shadow-sm ${priorityColors[priority]}`}
+                className={`px-3 py-1.5 rounded-full text-xs font-bold border shadow-sm ${priorityConfig.badgeColor}`}
                 title={
                   daysUntil !== null
                     ? `${daysUntil} days remaining`
                     : "Unknown deadline"
                 }
               >
-                {priority === "High"
-                  ? "⭐"
-                  : priority === "Medium"
-                  ? "🔶"
-                  : "🟢"}{" "}
-                {priority} Priority
+                {priorityConfig.icon} {priorityConfig.label}
                 {daysUntil !== null && daysUntil > 0 && (
                   <span className="ml-1 opacity-75">({daysUntil}d)</span>
                 )}
@@ -67,7 +57,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
               {university.fundingType && (
                 <span
                   className={`px-3 py-1.5 rounded-full text-xs font-bold shadow-sm ${
-                    fundingColors[university.fundingType]
+                    FUNDING_COLORS[university.fundingType]
                   }`}
                 >
                   💰 {university.fundingType}
@@ -119,7 +109,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
           <div>
             <p className="text-xs text-slate-500 mb-1 flex items-center gap-1">
               Application Deadline
-              {daysUntil !== null && daysUntil <= 7 && daysUntil > 0 && (
+              {isVeryUrgent(daysUntil) && (
                 <span
                   className="animate-pulse text-red-600"
                   title="Very urgent!"
@@ -133,17 +123,11 @@ export default function UniversityCard({ university }: UniversityCardProps) {
             </p>
             {daysUntil !== null && daysUntil > 0 && (
               <p
-                className={`text-xs mt-1 font-medium ${
-                  daysUntil <= 7
-                    ? "text-red-600"
-                    : daysUntil <= 30
-                    ? "text-orange-600"
-                    : daysUntil <= 90
-                    ? "text-yellow-600"
-                    : "text-green-600"
-                }`}
+                className={`text-xs mt-1 font-medium ${getUrgencyColor(
+                  daysUntil
+                )}`}
               >
-                {daysUntil === 1 ? "Tomorrow!" : `${daysUntil} days left`}
+                {formatDaysRemaining(daysUntil)}
               </p>
             )}
           </div>
@@ -251,18 +235,4 @@ export default function UniversityCard({ university }: UniversityCardProps) {
       </div>
     </div>
   );
-}
-
-function getCountryFlag(country: string): string {
-  const flags: Record<string, string> = {
-    USA: "🇺🇸",
-    Canada: "🇨🇦",
-    UK: "🇬🇧",
-    Switzerland: "🇨🇭",
-    Germany: "🇩🇪",
-    Singapore: "🇸🇬",
-    Australia: "🇦🇺",
-    "South Korea": "🇰🇷",
-  };
-  return flags[country] || "🌍";
 }

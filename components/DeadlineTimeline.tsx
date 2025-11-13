@@ -6,6 +6,8 @@ import {
   calculatePriority,
   getDaysUntilDeadline,
 } from "@/utils/calculatePriority";
+import { PRIORITY_CONFIG, isVeryUrgent } from "@/constants/priorities";
+import { getCountryFlag } from "@/constants/ui";
 
 interface DeadlineTimelineProps {
   universities: University[];
@@ -42,7 +44,7 @@ export default function DeadlineTimeline({
       }
     });
 
-    return Object.entries(groups).filter(([_, unis]) => unis.length > 0);
+    return Object.entries(groups).filter(([, unis]) => unis.length > 0);
   }, [universities]);
 
   return (
@@ -82,6 +84,7 @@ export default function DeadlineTimeline({
               {unis.map((uni) => {
                 const priority = calculatePriority(uni.applicationDeadline);
                 const daysUntil = getDaysUntilDeadline(uni.applicationDeadline);
+                const priorityConfig = PRIORITY_CONFIG[priority];
 
                 return (
                   <div
@@ -97,19 +100,11 @@ export default function DeadlineTimeline({
                           <span className="text-lg">
                             {getCountryFlag(uni.country)}
                           </span>
-                          {priority === "High" && (
-                            <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded flex items-center gap-1">
-                              ⭐ HIGH
-                              {daysUntil !== null && daysUntil > 0 && (
-                                <span className="opacity-75">
-                                  ({daysUntil}d)
-                                </span>
-                              )}
-                            </span>
-                          )}
-                          {priority === "Medium" && (
-                            <span className="px-2 py-0.5 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded flex items-center gap-1">
-                              🔶 MEDIUM
+                          {(priority === "High" || priority === "Medium") && (
+                            <span
+                              className={`px-2 py-0.5 ${priorityConfig.badgeColor} text-xs font-semibold rounded flex items-center gap-1`}
+                            >
+                              {priorityConfig.icon} {priorityConfig.shortLabel}
                               {daysUntil !== null && daysUntil > 0 && (
                                 <span className="opacity-75">
                                   ({daysUntil}d)
@@ -124,13 +119,11 @@ export default function DeadlineTimeline({
                         <div className="flex flex-wrap gap-2">
                           <span className="text-xs text-slate-500 flex items-center gap-1">
                             📅 {uni.applicationDeadline}
-                            {daysUntil !== null &&
-                              daysUntil > 0 &&
-                              daysUntil <= 7 && (
-                                <span className="text-red-600 font-bold animate-pulse">
-                                  ⚠️
-                                </span>
-                              )}
+                            {isVeryUrgent(daysUntil) && (
+                              <span className="text-red-600 font-bold animate-pulse">
+                                ⚠️
+                              </span>
+                            )}
                           </span>
                           {uni.fundingType && (
                             <span className="text-xs text-slate-500">
@@ -190,18 +183,4 @@ export default function DeadlineTimeline({
       </div>
     </div>
   );
-}
-
-function getCountryFlag(country: string): string {
-  const flags: Record<string, string> = {
-    USA: "🇺🇸",
-    Canada: "🇨🇦",
-    UK: "🇬🇧",
-    Switzerland: "🇨🇭",
-    Germany: "🇩🇪",
-    Singapore: "🇸🇬",
-    Australia: "🇦🇺",
-    "South Korea": "🇰🇷",
-  };
-  return flags[country] || "🌍";
 }

@@ -1,6 +1,8 @@
 "use client";
 
 import { CountryInfo } from "@/types/university";
+import { PRIORITY_CONFIG } from "@/constants/priorities";
+import { AVAILABLE_COUNTRIES, FUNDING_TYPES, PRIORITIES } from "@/constants/ui";
 
 interface FilterPanelProps {
   searchQuery: string;
@@ -25,24 +27,6 @@ export default function FilterPanel({
   setSelectedFundingTypes,
   countryInfo,
 }: FilterPanelProps) {
-  const countries = [
-    "USA",
-    "Canada",
-    "UK",
-    "Switzerland",
-    "Germany",
-    "Singapore",
-    "Australia",
-    "South Korea",
-  ];
-  const priorities = ["High", "Medium", "Low"];
-  const fundingTypes = [
-    "Fully Funded",
-    "Limited Funding",
-    "Self-Funded",
-    "Mixed",
-  ];
-
   const toggleFilter = (
     value: string,
     selected: string[],
@@ -96,7 +80,7 @@ export default function FilterPanel({
           Countries ({selectedCountries.length})
         </label>
         <div className="space-y-2 max-h-64 overflow-y-auto">
-          {countries.map((country) => (
+          {AVAILABLE_COUNTRIES.map((country) => (
             <label
               key={country}
               className="flex items-center cursor-pointer group"
@@ -123,32 +107,13 @@ export default function FilterPanel({
           Priority ({selectedPriorities.length})
         </label>
         <div className="space-y-2">
-          {priorities.map((priority) => {
-            const icon =
-              priority === "High" ? "⭐" : priority === "Medium" ? "🔶" : "🟢";
-            const bgColor =
-              priority === "High"
-                ? "bg-red-50 hover:bg-red-100"
-                : priority === "Medium"
-                ? "bg-yellow-50 hover:bg-yellow-100"
-                : "bg-green-50 hover:bg-green-100";
-            const timeLabel =
-              priority === "High"
-                ? "< 1 month"
-                : priority === "Medium"
-                ? "1-3 months"
-                : "> 3 months";
+          {PRIORITIES.map((priority) => {
+            const config = PRIORITY_CONFIG[priority];
 
             return (
               <label
                 key={priority}
-                className={`flex items-center justify-between cursor-pointer group p-2 rounded-lg transition-colors ${bgColor} border ${
-                  priority === "High"
-                    ? "border-red-200"
-                    : priority === "Medium"
-                    ? "border-yellow-200"
-                    : "border-green-200"
-                }`}
+                className={`flex items-center justify-between cursor-pointer group p-2 rounded-lg transition-colors ${config.bgColor} ${config.hoverBgColor} border ${config.borderColor}`}
               >
                 <div className="flex items-center">
                   <input
@@ -164,10 +129,12 @@ export default function FilterPanel({
                     className="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500"
                   />
                   <span className="ml-2 text-sm font-medium text-slate-700 group-hover:text-slate-900 flex items-center gap-1">
-                    {icon} {priority}
+                    {config.icon} {priority}
                   </span>
                 </div>
-                <span className="text-xs text-slate-500">{timeLabel}</span>
+                <span className="text-xs text-slate-500">
+                  {config.timeRange}
+                </span>
               </label>
             );
           })}
@@ -188,7 +155,7 @@ export default function FilterPanel({
           Funding Type ({selectedFundingTypes.length})
         </label>
         <div className="space-y-2">
-          {fundingTypes.map((type) => (
+          {FUNDING_TYPES.map((type) => (
             <label
               key={type}
               className="flex items-center cursor-pointer group"
