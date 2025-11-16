@@ -49,6 +49,34 @@ export const FUNDING_COLORS = {
   Mixed: "bg-blue-100 text-blue-800",
 } as const;
 
+/**
+ * Get funding color class for any funding type
+ * Handles complex funding strings by checking for keywords
+ */
+export function getFundingColor(fundingType: string): string {
+  // Direct match
+  if (fundingType in FUNDING_COLORS) {
+    return FUNDING_COLORS[fundingType as keyof typeof FUNDING_COLORS];
+  }
+
+  // Check for keywords in complex funding types
+  if (fundingType.includes("Fully Funded")) {
+    return FUNDING_COLORS["Fully Funded"];
+  }
+  if (fundingType.includes("Mixed")) {
+    return FUNDING_COLORS["Mixed"];
+  }
+  if (fundingType.includes("Limited Funding")) {
+    return FUNDING_COLORS["Limited Funding"];
+  }
+  if (fundingType.includes("Self-Funded")) {
+    return FUNDING_COLORS["Self-Funded"];
+  }
+
+  // Default fallback
+  return "bg-slate-100 text-slate-800";
+}
+
 // Available countries for filtering
 export const AVAILABLE_COUNTRIES = [
   "USA",

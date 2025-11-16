@@ -12,7 +12,7 @@ import {
   isVeryUrgent,
   formatDaysRemaining,
 } from "@/constants/priorities";
-import { FUNDING_COLORS } from "@/constants/ui";
+import { getFundingColor } from "@/constants/ui";
 import { CountryFlag } from "@/components/CountryFlag";
 import {
   Target,
@@ -70,9 +70,9 @@ export default function UniversityCard({ university }: UniversityCardProps) {
               </span>
               {university.fundingType && (
                 <span
-                  className={`px-3 py-1.5 rounded-full text-xs font-bold shadow-sm ${
-                    FUNDING_COLORS[university.fundingType]
-                  }`}
+                  className={`px-3 py-1.5 rounded-full text-xs font-bold shadow-sm ${getFundingColor(
+                    university.fundingType
+                  )}`}
                 >
                   💰 {university.fundingType}
                 </span>
