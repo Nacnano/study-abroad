@@ -1,7 +1,7 @@
 import { University, CountryInfo } from "@/types/university";
 
 /**
- * List of universities with detailed information for study abroad applications for Data Science and AI/ML research programs
+ * List of universities with detailed information for study abroad applications for Data Science and AI/ML programs
  */
 export const universities: University[] = [
   {
@@ -342,6 +342,10 @@ export const universities: University[] = [
   },
 ];
 
+/**
+ * Strategic analysis of post-study work visas and job markets for key countries.
+ * Updated to reflect 2025-2027 policy changes.
+ */
 export const countryInfo: Record<string, CountryInfo> = {
   USA: {
     name: "United States",
@@ -350,25 +354,25 @@ export const countryInfo: Record<string, CountryInfo> = {
     jobMarketOutlook:
       "Excellent: Largest AI/ML market, highest salaries. Long-term PR difficult (H-1B lottery).",
     strategicVerdict:
-      "Highest-risk, highest-reward. Best for fully-funded PhD. 3-year work permit is major advantage.",
+      "Highest-risk, highest-reward. Unmatched job market, but now facing significant political [7] and bureaucratic instability. Proposed end of 'Duration of Status' is a critical new risk factor.", // Updated
   },
   Canada: {
     name: "Canada",
     visaProgram: "Post-Graduation Work Permit (PGWP)",
     visaDuration: "3 years (for Master's)",
     jobMarketOutlook:
-      "Excellent: Clear path to PR, stable immigration policy, growing AI market.",
+      "Excellent: Growing AI market, clear path to PR. New PGWP rules do NOT affect MS/PhD grads.",
     strategicVerdict:
-      "Most balanced path. World-class education with clearest pathway to permanent residency.",
+      "Most balanced path, offering the highest stability. World-class education with the clearest, most *protected* pathway  to a 3-year work permit and permanent residency for MS/PhD graduates.", // Updated
   },
   UK: {
     name: "United Kingdom",
     visaProgram: "Graduate Route",
-    visaDuration: "2 years (MS) / 3 years (PhD)",
+    visaDuration: "18 months (MS) / 3 years (PhD)",
     jobMarketOutlook:
-      "Good but risky: Policy set to shorten to 18 months from Jan 2027. Strong AI market.",
+      "Good: Strong AI market (London, Cambridge). Visa stability is now a major issue for MS students.",
     strategicVerdict:
-      "Prestige path. Ideal for 1-year MS with external funding. Visa becoming less stable.",
+      "Prestige path with increasing risk. PhDs (3-year visa) are secure. MS path is high-risk: the visa is confirmed to be cut to 18 months for the 2026-27 intake , making it far less stable than Canada or Germany.", // Updated
   },
   Switzerland: {
     name: "Switzerland",
@@ -377,7 +381,7 @@ export const countryInfo: Record<string, CountryInfo> = {
     jobMarketOutlook:
       "Worst: Extremely challenging for non-EU graduates. Employers prefer EU citizens.",
     strategicVerdict:
-      "Critical mismatch. Best-value education but worst job prospects. Only for PhD elsewhere.",
+      "Critical Mismatch. World-class education just became 3x more expensive (to ~4,400 CHF/yr). This high cost is paired with the worst job prospects. A path for funded PhDs only.", // Updated
   },
   Germany: {
     name: "Germany",
@@ -386,16 +390,25 @@ export const countryInfo: Record<string, CountryInfo> = {
     jobMarketOutlook:
       "Excellent: Strong industrial demand, clear path to EU Blue Card.",
     strategicVerdict:
-      "Highest ROI. Free world-class education with generous visa and robust job market.",
+      "Highest ROI (with caveat). The 18-month job seeker visa  is exceptional. However, the 'no tuition' benefit is ending: top schools like TUM now charge significant non-EU fees (~€8-12k/yr).", // Updated
+  },
+  Netherlands: {
+    name: "Netherlands",
+    visaProgram: "Orientation Year (Zoekjaar)",
+    visaDuration: "1 year",
+    jobMarketOutlook:
+      "Good: Strong tech market.[54] AI/ML is highly competitive, requires MS+, and favors Dutch speakers.[56, 57]",
+    strategicVerdict:
+      "Strong program, moderate risk. The 1-year 'Orientation Year' permit  is excellent. However, the AI/ML job market is highly competitive for non-EU/non-Dutch speakers.",
   },
   Singapore: {
     name: "Singapore",
     visaProgram: "Employment Pass (EP)",
     visaDuration: "Tied to job offer",
     jobMarketOutlook:
-      "Excellent market but difficult visa: Booming AI hub, but high salary threshold (S$5,600/mo).",
+      "Excellent market but difficult visa: Booming AI hub, but high salary threshold (S$5,600/mo).[46]",
     strategicVerdict:
-      "High-cost, high-reward. Great for top candidates confident in securing high-salary offers.",
+      "High-cost, high-reward. Booming AI hub with a transparently difficult visa. The S$5,600/mo minimum (which scales with age ) filters for only the highest-earning graduates.", // Updated
   },
   Australia: {
     name: "Australia",
@@ -407,11 +420,29 @@ export const countryInfo: Record<string, CountryInfo> = {
   },
   "South Korea": {
     name: "South Korea",
-    visaProgram: "Engineer Status",
+    visaProgram: "Engineer Status (E-7)",
     visaDuration: "Tied to job (1-5 years)",
     jobMarketOutlook:
       "Good: Strong tech market, requires cultural/linguistic adaptation.",
     strategicVerdict:
-      "Strong programs with industry ties. Cultural adaptation important.",
+      "Strong, fully-funded programs (KAIST [127]). Cultural/linguistic adaptation is important for job market.",
+  },
+  Japan: {
+    name: "Japan",
+    visaProgram: "Designated Activities (Job-Hunting)",
+    visaDuration: "1 year",
+    jobMarketOutlook:
+      "High Demand: Massive tech talent shortage. AI/ML is in high demand.",
+    strategicVerdict:
+      "High-friction, high-need. A 1-year job-hunting visa  opens the door to a market with a severe tech talent shortage. Success is almost entirely dependent on linguistic adaptation (N2-level Japanese).",
+  },
+  China: {
+    name: "China",
+    visaProgram: "K Visa / Z Visa",
+    visaDuration: "Tied to job",
+    jobMarketOutlook:
+      "High Demand (Top-Tier): 'Talent war' for high-end AI specialists. Saturated general market.",
+    strategicVerdict:
+      "High-opportunity, high-ambiguity. A 'talent war'  for top AI researchers. New 'K visa' aims to attract S&T talent. Success depends on being at the top of the talent pool.",
   },
 };
