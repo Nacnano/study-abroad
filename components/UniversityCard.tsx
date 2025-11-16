@@ -51,6 +51,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
               {university.qsLogo && !logoError ? (
+                // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={university.qsLogo}
                   alt={`${university.name} logo`}
