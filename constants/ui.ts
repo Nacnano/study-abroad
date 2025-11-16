@@ -80,15 +80,15 @@ export function getCountryCode(country: string): string {
 }
 
 /**
- * Get flag image URL from Flagcdn CDN
+ * Get flag image URL from Flagcdn CDN using fixed-width format
  * @param country - Country name
- * @param size - Size in format "widthxheight" (e.g., "32x24", "64x48")
+ * @param width - Width in pixels (20, 40, 80, 160, 320, 640, 1280, 2560)
  * @param format - Image format: "png", "webp", "svg", "jpeg"
  * @returns CDN URL for the flag image
  */
 export function getFlagUrl(
   country: string,
-  size: string = "32x24",
+  width: number = 20,
   format: "png" | "webp" | "svg" | "jpeg" = "png"
 ): string {
   const code = getCountryCode(country);
@@ -97,25 +97,25 @@ export function getFlagUrl(
     return `https://flagcdn.com/${code}.svg`;
   }
 
-  return `https://flagcdn.com/${size}/${code}.${format}`;
+  return `https://flagcdn.com/w${width}/${code}.${format}`;
 }
 
 /**
- * Get flag image srcset for responsive images
+ * Get flag image srcset for responsive images (2x for retina displays)
  * @param country - Country name
- * @param baseSize - Base size (e.g., "16x12")
+ * @param width - Base width in pixels (20, 40, 80, 160, 320, 640, 1280, 2560)
+ * @param format - Image format: "png", "webp", "svg", "jpeg"
  * @returns srcset string for responsive images
  */
 export function getFlagSrcSet(
   country: string,
-  baseSize: string = "16x12"
+  width: number = 20,
+  format: "png" | "webp" | "svg" | "jpeg" = "png"
 ): string {
   const code = getCountryCode(country);
-  const [w, h] = baseSize.split("x").map(Number);
+  const width2x = width * 2;
 
-  return `https://flagcdn.com/${w * 2}x${
-    h * 2
-  }/${code}.png 2x, https://flagcdn.com/${w * 3}x${h * 3}/${code}.png 3x`;
+  return `https://flagcdn.com/w${width2x}/${code}.${format} 2x`;
 }
 
 /**

@@ -1,46 +1,44 @@
-import Image from "next/image";
-import { getFlagUrl } from "@/constants/ui";
+import { getFlagUrl, getFlagSrcSet } from "@/constants/ui";
 
 interface CountryFlagProps {
   country: string;
   width?: number;
-  height?: number;
   className?: string;
   priority?: boolean;
 }
 
 /**
  * CountryFlag component - displays a flag image from Flagcdn CDN
- * Uses high-quality flag images instead of emoji for consistent rendering
+ * Uses Flagcdn's fixed-width format (w20, w40, etc.) with 4:3 aspect ratio
  *
  * @param country - Country name (e.g., "USA", "UK", "Canada")
- * @param width - Width in pixels (default: 32)
- * @param height - Height in pixels (default: 24, maintains 4:3 aspect ratio)
+ * @param width - Width in pixels: 20, 40, 80, 160, 320, 640, 1280, or 2560 (default: 20)
  * @param className - Additional CSS classes
  * @param priority - Whether to prioritize loading this image
  */
 export function CountryFlag({
   country,
-  width = 32,
-  height = 24,
+  width = 20,
   className = "",
   priority = false,
 }: CountryFlagProps) {
-  // Calculate the CDN size format (e.g., "32x24")
-  const size = `${width}x${height}`;
+  // Flagcdn uses fixed widths: 20, 40, 80, 160, 320, 640, 1280, 2560
+  // Height is automatically calculated to maintain 4:3 aspect ratio
+  const height = Math.round((width * 3) / 4);
 
   // Get URL for the flag image
-  const flagUrl = getFlagUrl(country, size, "png");
+  const flagUrl = getFlagUrl(country, width, "png");
+  const srcSet = getFlagSrcSet(country, width, "png");
 
   return (
-    <Image
+    <img
       src={flagUrl}
+      srcSet={srcSet}
       width={width}
       height={height}
       alt={`${country} flag`}
       className={`inline-block ${className}`}
-      priority={priority}
-      unoptimized // Flagcdn already provides optimized images at exact sizes
+      loading={priority ? "eager" : "lazy"}
       style={{
         objectFit: "cover",
         display: "inline-block",

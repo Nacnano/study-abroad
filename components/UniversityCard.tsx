@@ -49,11 +49,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
         <div className="flex items-start justify-between mb-4 relative z-10">
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
-              <CountryFlag
-                country={university.country}
-                width={32}
-                height={24}
-              />
+              <CountryFlag country={university.country} width={40} />
               <h3 className="text-2xl font-bold bg-linear-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
                 {university.name}
               </h3>

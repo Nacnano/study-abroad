@@ -108,11 +108,7 @@ export default function DeadlineTimeline({
                           <h4 className="font-semibold text-slate-900">
                             {uni.name}
                           </h4>
-                          <CountryFlag
-                            country={uni.country}
-                            width={24}
-                            height={18}
-                          />
+                          <CountryFlag country={uni.country} width={20} />
                           {(priority === "High" || priority === "Medium") && (
                             <span
                               className={`px-2 py-0.5 ${priorityConfig.badgeColor} text-xs font-semibold rounded flex items-center gap-1`}

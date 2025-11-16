@@ -112,6 +112,7 @@ export default function Home() {
                 selectedFundingTypes={selectedFundingTypes}
                 setSelectedFundingTypes={setSelectedFundingTypes}
                 countryInfo={countryInfo}
+                universities={universities}
               />
             </div>
 
