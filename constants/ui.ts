@@ -1,5 +1,6 @@
-// Country flags mapping
+// Country flags mapping (supports both short and full country names)
 export const COUNTRY_FLAGS: Record<string, string> = {
+  // Short names (used in university data)
   USA: "🇺🇸",
   Canada: "🇨🇦",
   UK: "🇬🇧",
@@ -8,6 +9,9 @@ export const COUNTRY_FLAGS: Record<string, string> = {
   Singapore: "🇸🇬",
   Australia: "🇦🇺",
   "South Korea": "🇰🇷",
+  // Full names (used in countryInfo)
+  "United States": "🇺🇸",
+  "United Kingdom": "🇬🇧",
 } as const;
 
 // Default flag for unknown countries

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { countryInfo } from "@/data/universities";
 import Navigation from "@/components/Navigation";
+import { getCountryFlag } from "@/constants/ui";
 import {
   Globe,
   ArrowLeft,
@@ -218,18 +219,4 @@ export default function CountryComparison() {
       </div>
     </>
   );
-}
-
-function getCountryFlag(countryName: string): string {
-  const flags: Record<string, string> = {
-    "United States": "🇺🇸",
-    Canada: "🇨🇦",
-    "United Kingdom": "🇬🇧",
-    Switzerland: "🇨🇭",
-    Germany: "🇩🇪",
-    Singapore: "🇸🇬",
-    Australia: "🇦🇺",
-    "South Korea": "🇰🇷",
-  };
-  return flags[countryName] || "🌍";
 }
