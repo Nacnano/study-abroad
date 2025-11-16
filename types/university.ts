@@ -22,6 +22,7 @@ export interface University {
   website?: string;
 }
 
+// TODO: Refactor and migrate funding (very bad practice for scalability)
 type Funding =
   | "Fully Funded"
   | "Self-Funded"
