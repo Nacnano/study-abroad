@@ -3,6 +3,7 @@
 import { CountryInfo } from "@/types/university";
 import { PRIORITY_CONFIG } from "@/constants/priorities";
 import { AVAILABLE_COUNTRIES, FUNDING_TYPES, PRIORITIES } from "@/constants/ui";
+import { Filter, Search, X, Calendar, Info } from "lucide-react";
 
 interface FilterPanelProps {
   searchQuery: string;
@@ -50,20 +51,20 @@ export default function FilterPanel({
     <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 sticky top-6 backdrop-blur-sm">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent flex items-center gap-2">
-          <span className="text-2xl">🔍</span> Filters
+          <Filter className="w-5 h-5 text-blue-600" /> Filters
         </h3>
         <button
           onClick={clearAllFilters}
-          className="text-sm text-blue-600 hover:text-blue-700 font-bold px-3 py-1.5 rounded-lg hover:bg-blue-50 transition-all"
+          className="text-sm text-blue-600 hover:text-blue-700 font-bold px-3 py-1.5 rounded-lg hover:bg-blue-50 transition-all flex items-center gap-1"
         >
-          ✕ Clear
+          <X className="w-4 h-4" /> Clear
         </button>
       </div>
 
       {/* Search */}
       <div className="mb-6">
         <label className="flex items-center gap-2 text-sm font-bold text-slate-700 mb-2">
-          <span>🔎</span> Search
+          <Search className="w-4 h-4" /> Search
         </label>
         <input
           type="text"
@@ -139,8 +140,8 @@ export default function FilterPanel({
             );
           })}
         </div>
-        <p className="text-xs text-slate-500 mt-2 italic">
-          📅 Based on current date:{" "}
+        <p className="text-xs text-slate-500 mt-2 italic flex items-center gap-1">
+          <Calendar className="w-3 h-3" /> Based on current date:{" "}
           {new Date().toLocaleDateString("en-US", {
             month: "short",
             day: "numeric",
@@ -183,7 +184,8 @@ export default function FilterPanel({
       {/* Country Info Panel */}
       {selectedCountries.length === 1 && countryInfo[selectedCountries[0]] && (
         <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-          <h4 className="text-sm font-semibold text-blue-900 mb-2">
+          <h4 className="text-sm font-semibold text-blue-900 mb-2 flex items-center gap-2">
+            <Info className="w-4 h-4" />
             {countryInfo[selectedCountries[0]].name} Info
           </h4>
           <div className="space-y-2 text-xs text-blue-800">

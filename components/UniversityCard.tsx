@@ -13,6 +13,21 @@ import {
   formatDaysRemaining,
 } from "@/constants/priorities";
 import { FUNDING_COLORS, getCountryFlag } from "@/constants/ui";
+import {
+  Target,
+  Microscope,
+  Calendar,
+  DollarSign,
+  Home,
+  GraduationCap,
+  Clock,
+  Plane,
+  ChevronDown,
+  ChevronUp,
+  FileText,
+  Award,
+  AlertTriangle,
+} from "lucide-react";
 
 interface UniversityCardProps {
   university: University;
@@ -73,7 +88,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
         {/* Programs */}
         <div className="mb-4">
           <h4 className="text-sm font-bold text-slate-700 mb-2 flex items-center gap-2">
-            <span className="text-lg">🎯</span> Programs
+            <Target className="w-4 h-4" /> Programs
           </h4>
           <div className="flex flex-wrap gap-2">
             {university.programs.map((program, idx) => (
@@ -90,7 +105,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
         {/* Research Areas */}
         <div className="mb-4">
           <h4 className="text-sm font-bold text-slate-700 mb-2 flex items-center gap-2">
-            <span className="text-lg">🔬</span> Research Areas
+            <Microscope className="w-4 h-4" /> Research Areas
           </h4>
           <div className="flex flex-wrap gap-2">
             {university.researchAreas.map((area, idx) => (
@@ -108,13 +123,11 @@ export default function UniversityCard({ university }: UniversityCardProps) {
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div>
             <p className="text-xs text-slate-500 mb-1 flex items-center gap-1">
+              <Calendar className="w-3 h-3" />
               Application Deadline
               {isVeryUrgent(daysUntil) && (
-                <span
-                  className="animate-pulse text-red-600"
-                  title="Very urgent!"
-                >
-                  ⚠️
+                <span title="Very urgent!" className="inline-block">
+                  <AlertTriangle className="w-3 h-3 animate-pulse text-red-600" />
                 </span>
               )}
             </p>
@@ -132,13 +145,17 @@ export default function UniversityCard({ university }: UniversityCardProps) {
             )}
           </div>
           <div>
-            <p className="text-xs text-slate-500 mb-1">Tuition (Per Year)</p>
+            <p className="text-xs text-slate-500 mb-1 flex items-center gap-1">
+              <DollarSign className="w-3 h-3" />
+              Tuition (Per Year)
+            </p>
             <p className="text-sm font-semibold text-slate-900">
               {university.tuitionPerYear}
             </p>
           </div>
           <div>
-            <p className="text-xs text-slate-500 mb-1">
+            <p className="text-xs text-slate-500 mb-1 flex items-center gap-1">
+              <Home className="w-3 h-3" />
               Living Cost (Per Year)
             </p>
             <p className="text-sm font-semibold text-slate-900">
@@ -146,7 +163,10 @@ export default function UniversityCard({ university }: UniversityCardProps) {
             </p>
           </div>
           <div>
-            <p className="text-xs text-slate-500 mb-1">TOEFL/IELTS Min</p>
+            <p className="text-xs text-slate-500 mb-1 flex items-center gap-1">
+              <GraduationCap className="w-3 h-3" />
+              TOEFL/IELTS Min
+            </p>
             <p className="text-sm font-semibold text-slate-900">
               {university.toeflIeltsMin}
             </p>
@@ -159,7 +179,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-indigo-600 font-bold mb-1 flex items-center gap-1">
-                  <span>🛂</span> Post-Study Visa
+                  <Plane className="w-3 h-3" /> Post-Study Visa
                 </p>
                 <p className="text-sm text-indigo-900 font-semibold">
                   {university.visaType}
@@ -167,7 +187,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
               </div>
               <div className="text-right">
                 <p className="text-xs text-indigo-600 font-bold mb-1 flex items-center justify-end gap-1">
-                  <span>⏱️</span> Duration
+                  <Clock className="w-3 h-3" /> Duration
                 </p>
                 <p className="text-lg text-indigo-900 font-bold">
                   {university.visaDuration}
@@ -180,9 +200,19 @@ export default function UniversityCard({ university }: UniversityCardProps) {
         {/* Toggle Button */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="w-full py-3 px-4 text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-[1.02]"
+          className="w-full py-3 px-4 text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-[1.02] flex items-center justify-center gap-2"
         >
-          {isExpanded ? "▲ Show Less Details" : "▼ Show More Details"}
+          {isExpanded ? (
+            <>
+              <ChevronUp className="w-4 h-4" />
+              Show Less Details
+            </>
+          ) : (
+            <>
+              <ChevronDown className="w-4 h-4" />
+              Show More Details
+            </>
+          )}
         </button>
 
         {/* Expanded Content */}
@@ -190,7 +220,8 @@ export default function UniversityCard({ university }: UniversityCardProps) {
           <div className="mt-4 pt-4 border-t border-slate-200 space-y-4">
             {/* GRE Requirement */}
             <div>
-              <h4 className="text-sm font-semibold text-slate-700 mb-2">
+              <h4 className="text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
+                <FileText className="w-4 h-4" />
                 GRE Required?
               </h4>
               <p className="text-sm text-slate-600">{university.greRequired}</p>
@@ -198,7 +229,8 @@ export default function UniversityCard({ university }: UniversityCardProps) {
 
             {/* Key Documents */}
             <div>
-              <h4 className="text-sm font-semibold text-slate-700 mb-2">
+              <h4 className="text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
+                <FileText className="w-4 h-4" />
                 Key Documents
               </h4>
               <div className="flex flex-wrap gap-2">
@@ -215,7 +247,8 @@ export default function UniversityCard({ university }: UniversityCardProps) {
 
             {/* Scholarships */}
             <div>
-              <h4 className="text-sm font-semibold text-slate-700 mb-2">
+              <h4 className="text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
+                <Award className="w-4 h-4" />
                 University Scholarships
               </h4>
               <p className="text-sm text-slate-600">
@@ -225,7 +258,8 @@ export default function UniversityCard({ university }: UniversityCardProps) {
 
             {/* Notes */}
             <div>
-              <h4 className="text-sm font-semibold text-slate-700 mb-2">
+              <h4 className="text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4" />
                 Important Notes
               </h4>
               <p className="text-sm text-slate-600">{university.notes}</p>

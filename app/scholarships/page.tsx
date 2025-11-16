@@ -10,6 +10,15 @@ import {
   getBestForText,
   formatBooleanCell,
 } from "@/constants/scholarships";
+import {
+  DollarSign,
+  GraduationCap,
+  Briefcase,
+  AlertTriangle,
+  Check,
+  FileText,
+  Calendar,
+} from "lucide-react";
 
 export default function ScholarshipsPage() {
   const freshGradScholarships = scholarships.filter((s) => s.forFreshGrads);
@@ -23,8 +32,9 @@ export default function ScholarshipsPage() {
         <header className="relative bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-2xl overflow-hidden">
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <h1 className="text-4xl font-bold mb-2 drop-shadow-lg">
-              💰 Scholarship Guide for Thai Students
+            <h1 className="text-4xl font-bold mb-2 drop-shadow-lg flex items-center gap-3">
+              <DollarSign className="w-10 h-10" />
+              Scholarship Guide for Thai Students
             </h1>
             <p className="text-blue-100 text-lg">
               Major international scholarships and funding opportunities
@@ -35,8 +45,9 @@ export default function ScholarshipsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Strategic Note */}
           <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-lg mb-8">
-            <h3 className="text-lg font-bold text-amber-900 mb-2">
-              {SCHOLARSHIP_STRATEGY_NOTE.title}
+            <h3 className="text-lg font-bold text-amber-900 mb-2 flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5" />
+              {SCHOLARSHIP_STRATEGY_NOTE.title.replace("⚠️ ", "")}
             </h3>
             <p className="text-amber-800 mb-3">
               {
@@ -72,9 +83,7 @@ export default function ScholarshipsPage() {
             <div
               className={`flex items-center gap-3 mb-6 p-4 bg-gradient-to-r ${SCHOLARSHIP_SECTIONS.freshGrads.bgGradient} rounded-2xl border ${SCHOLARSHIP_SECTIONS.freshGrads.borderColor}`}
             >
-              <span className="text-4xl">
-                {SCHOLARSHIP_SECTIONS.freshGrads.icon}
-              </span>
+              <GraduationCap className="w-10 h-10 text-emerald-700" />
               <div>
                 <h2
                   className={`text-3xl font-bold bg-gradient-to-r ${SCHOLARSHIP_SECTIONS.freshGrads.gradient} bg-clip-text text-transparent`}
@@ -99,9 +108,7 @@ export default function ScholarshipsPage() {
             <div
               className={`flex items-center gap-3 mb-6 p-4 bg-gradient-to-r ${SCHOLARSHIP_SECTIONS.experienced.bgGradient} rounded-2xl border ${SCHOLARSHIP_SECTIONS.experienced.borderColor}`}
             >
-              <span className="text-4xl">
-                {SCHOLARSHIP_SECTIONS.experienced.icon}
-              </span>
+              <Briefcase className="w-10 h-10 text-blue-700" />
               <div>
                 <h2
                   className={`text-3xl font-bold bg-gradient-to-r ${SCHOLARSHIP_SECTIONS.experienced.gradient} bg-clip-text text-transparent`}
@@ -220,12 +227,15 @@ function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
       {/* Coverage */}
       <div className="mb-4">
         <h4 className="text-sm font-bold text-slate-900 mb-2 flex items-center gap-2">
-          <span className="text-lg">💰</span> Coverage
+          <DollarSign className="w-4 h-4" /> Coverage
         </h4>
         <ul className="space-y-1">
           {scholarship.coverage.map((item, idx) => (
-            <li key={idx} className="text-sm text-slate-600 flex items-start">
-              <span className="text-emerald-500 mr-2">✓</span>
+            <li
+              key={idx}
+              className="text-sm text-slate-600 flex items-start gap-2"
+            >
+              <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
               {item}
             </li>
           ))}
@@ -234,8 +244,9 @@ function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
 
       {/* Key Conditions */}
       <div className="mb-4">
-        <h4 className="text-sm font-semibold text-slate-700 mb-2">
-          📋 Key Conditions
+        <h4 className="text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
+          <FileText className="w-4 h-4" />
+          Key Conditions
         </h4>
         <ul className="space-y-1">
           {scholarship.keyConditions.map((condition, idx) => (
@@ -249,7 +260,8 @@ function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
 
       {/* Deadline */}
       <div className="pt-4 border-t border-slate-200">
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-slate-500 flex items-center gap-1">
+          <Calendar className="w-3 h-3" />
           <strong>Typical Deadline:</strong> {scholarship.deadlineNote}
         </p>
       </div>

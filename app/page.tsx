@@ -8,6 +8,7 @@ import StatsOverview from "@/components/StatsOverview";
 import DeadlineTimeline from "@/components/DeadlineTimeline";
 import Navigation from "@/components/Navigation";
 import { calculatePriority } from "@/utils/calculatePriority";
+import { GraduationCap, Calendar, List } from "lucide-react";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -62,19 +63,32 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex items-center justify-between">
-              <div>
-                <h1 className="text-4xl font-bold mb-2 drop-shadow-lg">
-                  🎓 AI/ML Graduate Programs
-                </h1>
-                <p className="text-blue-100 text-lg">
-                  Fall 2026-2027 • Strategic Guide for Thai Students
-                </p>
+              <div className="flex items-center gap-3">
+                <GraduationCap className="w-10 h-10" />
+                <div>
+                  <h1 className="text-4xl font-bold mb-1 drop-shadow-lg">
+                    AI/ML Graduate Programs
+                  </h1>
+                  <p className="text-blue-100 text-lg">
+                    Fall 2026-2027 • Strategic Guide for Thai Students
+                  </p>
+                </div>
               </div>
               <button
                 onClick={() => setShowDeadlineTimeline(!showDeadlineTimeline)}
-                className="px-6 py-3 bg-white text-blue-600 rounded-xl hover:bg-blue-50 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="px-6 py-3 bg-white text-blue-600 rounded-xl hover:bg-blue-50 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2"
               >
-                {showDeadlineTimeline ? "📋 List View" : "📅 Timeline"}
+                {showDeadlineTimeline ? (
+                  <>
+                    <List className="w-5 h-5" />
+                    <span>List View</span>
+                  </>
+                ) : (
+                  <>
+                    <Calendar className="w-5 h-5" />
+                    <span>Timeline</span>
+                  </>
+                )}
               </button>
             </div>
           </div>

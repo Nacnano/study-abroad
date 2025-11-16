@@ -3,6 +3,17 @@
 import Link from "next/link";
 import { countryInfo } from "@/data/universities";
 import Navigation from "@/components/Navigation";
+import {
+  Globe,
+  ArrowLeft,
+  Plane,
+  Briefcase,
+  Lightbulb,
+  CheckCircle2,
+  DollarSign,
+  Award,
+  AlertTriangle,
+} from "lucide-react";
 
 export default function CountryComparison() {
   const countries = Object.values(countryInfo);
@@ -16,19 +27,23 @@ export default function CountryComparison() {
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex items-center justify-between">
-              <div>
-                <h1 className="text-4xl font-bold mb-2 drop-shadow-lg">
-                  🌍 Country Comparison
-                </h1>
-                <p className="text-blue-100 text-lg">
-                  Compare visa policies, job markets, and strategic advantages
-                </p>
+              <div className="flex items-center gap-3">
+                <Globe className="w-10 h-10" />
+                <div>
+                  <h1 className="text-4xl font-bold mb-1 drop-shadow-lg">
+                    Country Comparison
+                  </h1>
+                  <p className="text-blue-100 text-lg">
+                    Compare visa policies, job markets, and strategic advantages
+                  </p>
+                </div>
               </div>
               <Link
                 href="/"
-                className="px-6 py-3 bg-white text-blue-600 rounded-xl hover:bg-blue-50 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="px-6 py-3 bg-white text-blue-600 rounded-xl hover:bg-blue-50 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2"
               >
-                ← Back to Universities
+                <ArrowLeft className="w-4 h-4" />
+                Back to Universities
               </Link>
             </div>
           </div>
@@ -114,7 +129,7 @@ export default function CountryComparison() {
                 <div className="space-y-4">
                   <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-4 border border-blue-200">
                     <h4 className="text-sm font-bold text-blue-900 mb-2 flex items-center gap-2">
-                      <span className="text-lg">🛂</span> Post-Study Visa
+                      <Plane className="w-4 h-4" /> Post-Study Visa
                     </h4>
                     <p className="text-sm text-blue-800 font-medium">
                       {country.visaProgram}
@@ -128,7 +143,7 @@ export default function CountryComparison() {
 
                   <div className="bg-gradient-to-r from-emerald-50 to-green-50 rounded-xl p-4 border border-emerald-200">
                     <h4 className="text-sm font-bold text-emerald-900 mb-2 flex items-center gap-2">
-                      <span className="text-lg">💼</span> Job Market Outlook
+                      <Briefcase className="w-4 h-4" /> Job Market Outlook
                     </h4>
                     <p className="text-sm text-emerald-800 font-medium">
                       {country.jobMarketOutlook}
@@ -137,7 +152,7 @@ export default function CountryComparison() {
 
                   <div className="pt-2 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4 border border-purple-200">
                     <h4 className="text-sm font-bold text-purple-900 mb-2 flex items-center gap-2">
-                      <span className="text-lg">💡</span> Strategic Verdict
+                      <Lightbulb className="w-4 h-4" /> Strategic Verdict
                     </h4>
                     <p className="text-sm text-purple-800 font-medium italic">
                       {country.strategicVerdict}
@@ -151,12 +166,14 @@ export default function CountryComparison() {
           {/* Key Insights */}
           <div className="mt-8 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 rounded-2xl border-2 border-blue-200 p-8 shadow-xl">
             <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6 flex items-center gap-2">
-              🎯 Key Insights for Thai Students
+              <Lightbulb className="w-6 h-6 text-blue-600" />
+              Key Insights for Thai Students
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-shadow">
-                <h4 className="font-bold text-emerald-900 mb-2 text-lg">
-                  ✅ Best for Work & PR
+                <h4 className="font-bold text-emerald-900 mb-2 text-lg flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5" />
+                  Best for Work & PR
                 </h4>
                 <p className="text-sm text-slate-700">
                   <strong>Canada & Germany:</strong> Clear pathways to permanent
@@ -165,8 +182,9 @@ export default function CountryComparison() {
                 </p>
               </div>
               <div className="bg-white rounded-lg p-4">
-                <h4 className="font-semibold text-amber-900 mb-2">
-                  💰 Best Value
+                <h4 className="font-semibold text-amber-900 mb-2 flex items-center gap-2">
+                  <DollarSign className="w-5 h-5" />
+                  Best Value
                 </h4>
                 <p className="text-sm text-slate-700">
                   <strong>Germany:</strong> Free tuition at public universities
@@ -174,8 +192,9 @@ export default function CountryComparison() {
                 </p>
               </div>
               <div className="bg-white rounded-lg p-4">
-                <h4 className="font-semibold text-blue-900 mb-2">
-                  🏆 Most Prestigious
+                <h4 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
+                  <Award className="w-5 h-5" />
+                  Most Prestigious
                 </h4>
                 <p className="text-sm text-slate-700">
                   <strong>USA & UK:</strong> Home to world&apos;s top AI labs
@@ -183,8 +202,9 @@ export default function CountryComparison() {
                 </p>
               </div>
               <div className="bg-white rounded-lg p-4">
-                <h4 className="font-semibold text-red-900 mb-2">
-                  ⚠️ Most Challenging
+                <h4 className="font-semibold text-red-900 mb-2 flex items-center gap-2">
+                  <AlertTriangle className="w-5 h-5" />
+                  Most Challenging
                 </h4>
                 <p className="text-sm text-slate-700">
                   <strong>Switzerland & Singapore:</strong> Excellent education

@@ -8,6 +8,16 @@ import {
 } from "@/utils/calculatePriority";
 import { PRIORITY_CONFIG, isVeryUrgent } from "@/constants/priorities";
 import { getCountryFlag } from "@/constants/ui";
+import {
+  Calendar,
+  DollarSign,
+  Plane,
+  AlertTriangle,
+  Target,
+  Star,
+  Circle,
+  CheckCircle2,
+} from "lucide-react";
 
 interface DeadlineTimelineProps {
   universities: University[];
@@ -49,7 +59,8 @@ export default function DeadlineTimeline({
 
   return (
     <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-      <h2 className="text-2xl font-bold text-slate-900 mb-6">
+      <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+        <Calendar className="w-6 h-6" />
         Application Deadline Timeline
       </h2>
 
@@ -118,21 +129,27 @@ export default function DeadlineTimeline({
                         </p>
                         <div className="flex flex-wrap gap-2">
                           <span className="text-xs text-slate-500 flex items-center gap-1">
-                            📅 {uni.applicationDeadline}
+                            <Calendar className="w-3 h-3" />
+                            {uni.applicationDeadline}
                             {isVeryUrgent(daysUntil) && (
-                              <span className="text-red-600 font-bold animate-pulse">
-                                ⚠️
+                              <span
+                                className="inline-block"
+                                title="Very urgent!"
+                              >
+                                <AlertTriangle className="w-3 h-3 text-red-600 font-bold animate-pulse" />
                               </span>
                             )}
                           </span>
                           {uni.fundingType && (
-                            <span className="text-xs text-slate-500">
-                              💰 {uni.fundingType}
+                            <span className="text-xs text-slate-500 flex items-center gap-1">
+                              <DollarSign className="w-3 h-3" />
+                              {uni.fundingType}
                             </span>
                           )}
                           {uni.visaDuration && (
-                            <span className="text-xs text-slate-500">
-                              🛂 {uni.visaDuration}
+                            <span className="text-xs text-slate-500 flex items-center gap-1">
+                              <Plane className="w-3 h-3" />
+                              {uni.visaDuration}
                             </span>
                           )}
                         </div>
@@ -148,37 +165,39 @@ export default function DeadlineTimeline({
 
       {/* Legend */}
       <div className="mt-8 pt-6 border-t border-slate-200">
-        <h4 className="text-sm font-semibold text-slate-700 mb-3">
-          🎯 Priority Calculation Guide
+        <h4 className="text-sm font-semibold text-slate-700 mb-3 flex items-center gap-2">
+          <Target className="w-4 h-4" />
+          Priority Calculation Guide
         </h4>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mb-4">
           <div className="p-3 bg-red-50 rounded-lg border border-red-200">
-            <p className="font-semibold text-red-900 mb-1 flex items-center gap-1">
-              ⭐ High Priority
+            <p className="font-semibold text-red-900 mb-1 flex items-center gap-2">
+              <Star className="w-4 h-4" /> High Priority
             </p>
             <p className="text-red-700 text-xs">
               Less than 1 month remaining. Apply immediately!
             </p>
           </div>
           <div className="p-3 bg-yellow-50 rounded-lg border border-yellow-200">
-            <p className="font-semibold text-yellow-900 mb-1 flex items-center gap-1">
-              🔶 Medium Priority
+            <p className="font-semibold text-yellow-900 mb-1 flex items-center gap-2">
+              <Circle className="w-4 h-4" /> Medium Priority
             </p>
             <p className="text-yellow-700 text-xs">
               1-3 months remaining. Start preparing now.
             </p>
           </div>
           <div className="p-3 bg-green-50 rounded-lg border border-green-200">
-            <p className="font-semibold text-green-900 mb-1 flex items-center gap-1">
-              🟢 Low Priority
+            <p className="font-semibold text-green-900 mb-1 flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4" /> Low Priority
             </p>
             <p className="text-green-700 text-xs">
               More than 3 months. Research and plan ahead.
             </p>
           </div>
         </div>
-        <p className="text-xs text-slate-500 text-center italic">
-          💡 Priority updates automatically based on the current date
+        <p className="text-xs text-slate-500 text-center italic flex items-center justify-center gap-1">
+          <Calendar className="w-3 h-3" />
+          Priority updates automatically based on the current date
         </p>
       </div>
     </div>
