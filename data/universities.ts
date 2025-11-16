@@ -1,4 +1,5 @@
 import { University, CountryInfo } from "@/types/university";
+import { getQSRanking, getRankDisplay } from "@/utils/qsRankings";
 
 /**
  * List of universities with detailed information for study abroad applications
@@ -6,8 +7,10 @@ import { University, CountryInfo } from "@/types/university";
  *
  * Data has been updated for the 2026-2027 application cycle based on
  * analysis of 2025-2026 financial data and 2025-2027 policy updates.
+ *
+ * QS Rankings data is automatically enriched from top-universities-scraper_2025.json
  */
-export const universities: University[] = [
+const universitiesBase: University[] = [
   {
     id: "mit",
     name: "Massachusetts Institute of Technology (MIT)",
@@ -1475,6 +1478,30 @@ export const universities: University[] = [
     website: "https://en.itu.dk",
   },
 ];
+
+/**
+ * Enrich universities data with QS World Rankings information
+ * Matches university names and adds ranking, score, and logo
+ */
+function enrichWithQSRankings(universities: University[]): University[] {
+  return universities.map((uni) => {
+    const qsData = getQSRanking(uni.name);
+
+    if (qsData) {
+      return {
+        ...uni,
+        qsRank: getRankDisplay(qsData),
+        qsScore: qsData.overall_score,
+        qsLogo: qsData.logo,
+      };
+    }
+
+    return uni;
+  });
+}
+
+// Export enriched universities with QS Rankings data
+export const universities = enrichWithQSRankings(universitiesBase);
 
 /**
  * Strategic analysis of post-study work visas and job markets for key countries.

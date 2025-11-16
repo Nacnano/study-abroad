@@ -20,6 +20,10 @@ export interface University {
   fundingType?: Funding;
   programType?: "PhD" | "MS" | "MPhil" | "MEng" | "Mixed";
   website?: string;
+  // QS World Rankings data (optional, matched by name)
+  qsRank?: string; // e.g., "1", "=2", "15"
+  qsScore?: string; // e.g., "100", "98.5"
+  qsLogo?: string; // Logo URL from QS data
 }
 
 // TODO: Refactor and migrate funding (very bad practice for scalability)

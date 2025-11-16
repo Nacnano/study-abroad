@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "flagcdn.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "www.topuniversities.com",
+        pathname: "/sites/default/files/**",
+      },
     ],
   },
 };

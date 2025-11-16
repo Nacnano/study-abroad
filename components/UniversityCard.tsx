@@ -14,6 +14,7 @@ import {
 } from "@/constants/priorities";
 import { getFundingColor } from "@/constants/ui";
 import { CountryFlag } from "@/components/CountryFlag";
+import Image from "next/image";
 import {
   Target,
   Microscope,
@@ -49,10 +50,35 @@ export default function UniversityCard({ university }: UniversityCardProps) {
         <div className="flex items-start justify-between mb-4 relative z-10">
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
-              <CountryFlag country={university.country} width={40} />
-              <h3 className="text-2xl font-bold bg-linear-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
-                {university.name}
-              </h3>
+              {university.qsLogo ? (
+                <Image
+                  src={university.qsLogo}
+                  alt={`${university.name} logo`}
+                  width={48}
+                  height={48}
+                  className="object-contain rounded-lg border border-slate-200"
+                  unoptimized
+                />
+              ) : (
+                <CountryFlag country={university.country} width={40} />
+              )}
+              <div>
+                <h3 className="text-2xl font-bold bg-linear-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+                  {university.name}
+                </h3>
+                {university.qsRank && (
+                  <div className="flex items-center gap-2 mt-1">
+                    <span className="text-xs font-semibold text-amber-600 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                      🏆 QS Rank #{university.qsRank}
+                    </span>
+                    {university.qsScore && (
+                      <span className="text-xs font-medium text-slate-600">
+                        Score: {university.qsScore}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
             <div className="flex flex-wrap gap-2 mb-3">
               <span

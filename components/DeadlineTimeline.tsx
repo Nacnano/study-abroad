@@ -108,6 +108,11 @@ export default function DeadlineTimeline({
                           <h4 className="font-semibold text-slate-900">
                             {uni.name}
                           </h4>
+                          {uni.qsRank && (
+                            <span className="text-xs font-semibold text-amber-600 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                              #{uni.qsRank}
+                            </span>
+                          )}
                           <CountryFlag country={uni.country} width={20} />
                           {(priority === "High" || priority === "Medium") && (
                             <span
