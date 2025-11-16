@@ -1,5 +1,8 @@
 import { University, CountryInfo } from "@/types/university";
 
+/**
+ * List of universities with detailed information for study abroad applications for Data Science and AI/ML research programs
+ */
 export const universities: University[] = [
   {
     id: "mit",
