@@ -12,7 +12,8 @@ import {
   isVeryUrgent,
   formatDaysRemaining,
 } from "@/constants/priorities";
-import { FUNDING_COLORS, getCountryFlag } from "@/constants/ui";
+import { FUNDING_COLORS } from "@/constants/ui";
+import { CountryFlag } from "@/components/CountryFlag";
 import {
   Target,
   Microscope,
@@ -48,9 +49,11 @@ export default function UniversityCard({ university }: UniversityCardProps) {
         <div className="flex items-start justify-between mb-4 relative z-10">
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
-              <span className="text-3xl">
-                {getCountryFlag(university.country)}
-              </span>
+              <CountryFlag
+                country={university.country}
+                width={32}
+                height={24}
+              />
               <h3 className="text-2xl font-bold bg-linear-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
                 {university.name}
               </h3>

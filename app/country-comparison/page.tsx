@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { countryInfo } from "@/data/universities";
 import Navigation from "@/components/Navigation";
-import { getCountryFlag } from "@/constants/ui";
+import { CountryFlag } from "@/components/CountryFlag";
 import {
   Globe,
   ArrowLeft,
@@ -82,9 +82,11 @@ export default function CountryComparison() {
                     >
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-2">
-                          <span className="text-2xl">
-                            {getCountryFlag(country.name)}
-                          </span>
+                          <CountryFlag
+                            country={country.name}
+                            width={28}
+                            height={21}
+                          />
                           <span className="font-semibold text-slate-900">
                             {country.name}
                           </span>
@@ -119,9 +121,7 @@ export default function CountryComparison() {
                 className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="text-3xl">
-                    {getCountryFlag(country.name)}
-                  </span>
+                  <CountryFlag country={country.name} width={32} height={24} />
                   <h3 className="text-xl font-bold text-slate-900">
                     {country.name}
                   </h3>
