@@ -50,7 +50,7 @@ export default function FilterPanel({
   return (
     <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 sticky top-6 backdrop-blur-sm">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent flex items-center gap-2">
+        <h3 className="text-xl font-bold bg-linear-to-rrom-blue-600 to-purple-600 bg-clip-text text-transparent flex items-center gap-2">
           <Filter className="w-5 h-5 text-blue-600" /> Filters
         </h3>
         <button

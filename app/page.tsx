@@ -57,9 +57,9 @@ export default function Home() {
   return (
     <>
       <Navigation />
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <div className="min-h-screen bg-linear-to-br from-indigo-50 via-white to-purple-50">
         {/* Header */}
-        <header className="relative bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-2xl overflow-hidden">
+        <header className="relative bg-linear-to-r from-blue-600 to-purple-600 text-white shadow-2xl overflow-hidden">
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex items-center justify-between">

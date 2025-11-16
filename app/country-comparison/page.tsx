@@ -22,9 +22,9 @@ export default function CountryComparison() {
   return (
     <>
       <Navigation />
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <div className="min-h-screen bg-linear-to-br from-indigo-50 via-white to-purple-50">
         {/* Header */}
-        <header className="relative bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-2xl overflow-hidden">
+        <header className="relative bg-linear-to-rrom-blue-600 to-purple-600 text-white shadow-2xl overflow-hidden">
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex items-center justify-between">
@@ -55,7 +55,7 @@ export default function CountryComparison() {
           <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gradient-to-r from-slate-100 to-slate-50 border-b-2 border-slate-200">
+                <thead className="bg-linear-to-r from-slate-100 to-slate-50 border-b-2 border-slate-200">
                   <tr>
                     <th className="px-6 py-4 text-left text-sm font-bold text-slate-900">
                       Country
@@ -128,7 +128,7 @@ export default function CountryComparison() {
                 </div>
 
                 <div className="space-y-4">
-                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-4 border border-blue-200">
+                  <div className="bg-linear-to-r from-blue-50 to-indigo-50 rounded-xl p-4 border border-blue-200">
                     <h4 className="text-sm font-bold text-blue-900 mb-2 flex items-center gap-2">
                       <Plane className="w-4 h-4" /> Post-Study Visa
                     </h4>
@@ -136,13 +136,13 @@ export default function CountryComparison() {
                       {country.visaProgram}
                     </p>
                     <div className="mt-2">
-                      <span className="inline-block px-3 py-1 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 rounded-full text-xs font-bold shadow-sm">
+                      <span className="inline-block px-3 py-1 bg-linear-to-r from-blue-100 to-blue-200 text-blue-700 rounded-full text-xs font-bold shadow-sm">
                         Duration: {country.visaDuration}
                       </span>
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-r from-emerald-50 to-green-50 rounded-xl p-4 border border-emerald-200">
+                  <div className="bg-linear-to-r from-emerald-50 to-green-50 rounded-xl p-4 border border-emerald-200">
                     <h4 className="text-sm font-bold text-emerald-900 mb-2 flex items-center gap-2">
                       <Briefcase className="w-4 h-4" /> Job Market Outlook
                     </h4>
@@ -151,7 +151,7 @@ export default function CountryComparison() {
                     </p>
                   </div>
 
-                  <div className="pt-2 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4 border border-purple-200">
+                  <div className="pt-2 bg-linear-to-r from-purple-50 to-pink-50 rounded-xl p-4 border border-purple-200">
                     <h4 className="text-sm font-bold text-purple-900 mb-2 flex items-center gap-2">
                       <Lightbulb className="w-4 h-4" /> Strategic Verdict
                     </h4>
@@ -165,8 +165,8 @@ export default function CountryComparison() {
           </div>
 
           {/* Key Insights */}
-          <div className="mt-8 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 rounded-2xl border-2 border-blue-200 p-8 shadow-xl">
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6 flex items-center gap-2">
+          <div className="mt-8 bg-linear-to-r from-blue-50 via-indigo-50 to-purple-50 rounded-2xl border-2 border-blue-200 p-8 shadow-xl">
+            <h3 className="text-2xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6 flex items-center gap-2">
               <Lightbulb className="w-6 h-6 text-blue-600" />
               Key Insights for Thai Students
             </h3>

@@ -74,7 +74,7 @@ export default function DeadlineTimeline({
 
             {/* Period Header */}
             <div className="flex items-center gap-4 mb-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
+              <div className="shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
                 {unis.length}
               </div>
               <div>
@@ -100,7 +100,7 @@ export default function DeadlineTimeline({
                 return (
                   <div
                     key={uni.id}
-                    className="p-5 bg-gradient-to-r from-slate-50 to-slate-100 rounded-xl border-2 border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+                    className="p-5 bg-linear-to-r from-slate-50 to-slate-100 rounded-xl border-2 border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
                   >
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
