@@ -14,7 +14,6 @@ import {
 } from "@/constants/priorities";
 import { getFundingColor } from "@/constants/ui";
 import { CountryFlag } from "@/components/CountryFlag";
-import Image from "next/image";
 import {
   Target,
   Microscope,
@@ -37,6 +36,7 @@ interface UniversityCardProps {
 
 export default function UniversityCard({ university }: UniversityCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [logoError, setLogoError] = useState(false);
 
   const priority = calculatePriority(university.applicationDeadline);
   const daysUntil = getDaysUntilDeadline(university.applicationDeadline);
@@ -50,17 +50,24 @@ export default function UniversityCard({ university }: UniversityCardProps) {
         <div className="flex items-start justify-between mb-4 relative z-10">
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
-              {university.qsLogo ? (
-                <Image
+              {university.qsLogo && !logoError ? (
+                <img
                   src={university.qsLogo}
                   alt={`${university.name} logo`}
-                  width={48}
-                  height={48}
-                  className="object-contain rounded-lg border border-slate-200"
-                  unoptimized
+                  className="w-12 h-12 object-contain rounded-lg border border-slate-200 bg-white p-1 shrink-0"
+                  onError={() => {
+                    console.error(
+                      `Failed to load logo for ${university.name}:`,
+                      university.qsLogo
+                    );
+                    setLogoError(true);
+                  }}
+                  loading="lazy"
                 />
               ) : (
-                <CountryFlag country={university.country} width={40} />
+                <div className="w-12 h-12 rounded-lg border border-slate-200 bg-linear-to-br from-blue-50 to-purple-50 flex items-center justify-center shrink-0">
+                  <GraduationCap className="w-6 h-6 text-slate-400" />
+                </div>
               )}
               <div>
                 <h3 className="text-2xl font-bold bg-linear-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
@@ -103,8 +110,9 @@ export default function UniversityCard({ university }: UniversityCardProps) {
                   💰 {university.fundingType}
                 </span>
               )}
-              <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-linear-to-r from-slate-100 to-slate-200 text-slate-700 shadow-sm">
-                📍 {university.country}
+              <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-linear-to-r from-slate-100 to-slate-200 text-slate-700 shadow-sm flex items-center gap-1.5">
+                <CountryFlag country={university.country} width={20} />
+                {university.country}
               </span>
             </div>
           </div>
