@@ -31,6 +31,7 @@ export function CountryFlag({
   const srcSet = getFlagSrcSet(country, width, "png");
 
   return (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={flagUrl}
       srcSet={srcSet}
