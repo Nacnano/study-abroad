@@ -63,6 +63,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
                     setLogoError(true);
                   }}
                   loading="lazy"
+                  referrerPolicy="no-referrer"
                 />
               ) : (
                 <div className="w-12 h-12 rounded-lg border border-slate-200 bg-linear-to-br from-blue-50 to-purple-50 flex items-center justify-center shrink-0">
