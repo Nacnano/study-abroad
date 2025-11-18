@@ -2026,8 +2026,3 @@ function enrichWithQSRankings(universities: University[]): University[] {
 
 // Export enriched universities with QS Rankings data
 export const universities = enrichWithQSRankings(universitiesBase);
-
-/**
- * Strategic analysis of post-study work visas and job markets for key countries.
- * Updated to reflect 2025-2027 policy changes.
- */

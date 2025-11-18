@@ -1,5 +1,9 @@
 import { CountryInfo } from "@/types/country";
 
+/**
+ * Strategic analysis of post-study work visas and job markets for key countries.
+ * Updated to reflect 2025-2027 policy changes.
+ */
 export const countryInfo: Record<string, CountryInfo> = {
   USA: {
     name: "United States",
