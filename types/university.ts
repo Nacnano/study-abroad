@@ -32,11 +32,6 @@ type Funding =
   | "Self-Funded"
   | "Limited Funding"
   | "Mixed"
-  | "Fully Funded (PhD) / Mixed (MSc)"
-  | "Self-Funded (MSc) / Limited Funding (PhD)"
-  | "Limited Funding (MSc) / Fully Funded (PhD employment)"
-  | "Fully Funded (via CGS or university scholarships) / Mixed"
-  | "Fully Funded (many research students)"
-  | "Limited Funding (MS) / Fully Funded via MEXT (PhD applicants)";
+  | string;
 
 export type Priority = "High" | "Medium" | "Low";
