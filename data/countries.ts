@@ -103,4 +103,40 @@ export const countryInfo: Record<string, CountryInfo> = {
     strategicVerdict:
       "High-opportunity, high-ambiguity. A 'talent war'  for top AI researchers. New 'K visa' aims to attract S&T talent. Success depends on being at the top of the talent pool.",
   },
+  France: {
+    name: "France",
+    visaProgram: "Job Search / Business Creation Visa (APS)",
+    visaDuration: "1 year",
+    jobMarketOutlook:
+      "Excellent: Paris is a core European AI hub (Mistral AI, Google/Meta AI labs). Strong demand for AI/ML roles.",
+    strategicVerdict:
+      "Top-tier research path. The 1-year 'Autorisation Provisoire de Séjour' (APS) visa is a solid window. France's market is a global leader, with world-class research labs and major AI startups.",
+  },
+  Ireland: {
+    name: "Ireland",
+    visaProgram: "Third Level Graduate Programme (Stamp 1G)",
+    visaDuration: "2 years (for Master's/PhD)",
+    jobMarketOutlook:
+      "Excellent: Massive demand from EU HQs of US tech giants (Google, Meta, Apple). AI skills shortage is widely reported.",
+    strategicVerdict:
+      "The 'European Canada.' Extremely stable 2-year visa (1+1). The AI job market is booming, with demand doubling since 2023, particularly in FinTech (Dublin) and MedTech (Galway). A top, low-risk path.",
+  },
+  Sweden: {
+    name: "Sweden",
+    visaProgram: "Residence Permit to Look for Work",
+    visaDuration: "1 year",
+    jobMarketOutlook:
+      "Excellent: Strong, innovative market (KTH, Spotify, Klarna). Research shows AI is augmenting jobs, not just replacing.",
+    strategicVerdict:
+      "High-innovation, high-stability. The 12-month post-study permit is generous. Sweden has a mature tech market and a strong research-to-industry pipeline, with a sharp rise in demand for AI-specific skills.",
+  },
+  "New Zealand": {
+    name: "New Zealand",
+    visaProgram: "Post-Study Work Visa",
+    visaDuration: "3 years (for Master's/PhD)",
+    jobMarketOutlook:
+      "Good: Stable market with specialized strengths, particularly in AgriTech AI and creative tech.",
+    strategicVerdict:
+      "Maximum stability path. The 3-year visa is one of the longest available, offering an unmatched runway to a job and residency. The AI market is smaller than Australia's but growing in specialized, high-value niches.",
+  },
 };
