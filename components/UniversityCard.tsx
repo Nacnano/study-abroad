@@ -276,7 +276,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
                     key={idx}
                     className="px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200 rounded text-sm"
                   >
-                    {item}
+                    {doc}
                   </span>
                 ))}
               </div>
