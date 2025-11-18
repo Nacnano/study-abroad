@@ -22,9 +22,9 @@ export default function CountryComparison() {
   return (
     <>
       <Navigation />
-      <div className="min-h-screen bg-linear-to-br from-indigo-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors">
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors">
         {/* Header */}
-        <header className="relative bg-linear-to-rrom-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 text-white shadow-2xl overflow-hidden">
+        <header className="relative bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 text-white shadow-2xl overflow-hidden">
           <div className="absolute inset-0 bg-black/10 dark:bg-black/30"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex items-center justify-between">
@@ -55,7 +55,7 @@ export default function CountryComparison() {
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden transition-colors">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-linear-to-r from-slate-100 to-slate-50 dark:from-slate-700 dark:to-slate-800 border-b-2 border-slate-200 dark:border-slate-600">
+                <thead className="bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-700 dark:to-slate-800 border-b-2 border-slate-200 dark:border-slate-600">
                   <tr>
                     <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-slate-100">
                       Country
@@ -128,7 +128,7 @@ export default function CountryComparison() {
                 </div>
 
                 <div className="space-y-4">
-                  <div className="bg-linear-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-xl p-4 border border-blue-200 dark:border-blue-800">
+                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-xl p-4 border border-blue-200 dark:border-blue-800">
                     <h4 className="text-sm font-bold text-blue-900 dark:text-blue-300 mb-2 flex items-center gap-2">
                       <Plane className="w-4 h-4" /> Post-Study Visa
                     </h4>
@@ -136,13 +136,13 @@ export default function CountryComparison() {
                       {country.visaProgram}
                     </p>
                     <div className="mt-2">
-                      <span className="inline-block px-3 py-1 bg-linear-to-r from-blue-100 to-blue-200 dark:from-blue-800 dark:to-blue-700 text-blue-700 dark:text-blue-200 rounded-full text-xs font-bold shadow-sm">
+                      <span className="inline-block px-3 py-1 bg-gradient-to-r from-blue-100 to-blue-200 dark:from-blue-800 dark:to-blue-700 text-blue-700 dark:text-blue-200 rounded-full text-xs font-bold shadow-sm">
                         Duration: {country.visaDuration}
                       </span>
                     </div>
                   </div>
 
-                  <div className="bg-linear-to-r from-emerald-50 to-green-50 dark:from-emerald-900/30 dark:to-green-900/30 rounded-xl p-4 border border-emerald-200 dark:border-emerald-800">
+                  <div className="bg-gradient-to-r from-emerald-50 to-green-50 dark:from-emerald-900/30 dark:to-green-900/30 rounded-xl p-4 border border-emerald-200 dark:border-emerald-800">
                     <h4 className="text-sm font-bold text-emerald-900 dark:text-emerald-300 mb-2 flex items-center gap-2">
                       <Briefcase className="w-4 h-4" /> Job Market Outlook
                     </h4>
@@ -151,7 +151,7 @@ export default function CountryComparison() {
                     </p>
                   </div>
 
-                  <div className="pt-2 bg-linear-to-r from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 rounded-xl p-4 border border-purple-200 dark:border-purple-800">
+                  <div className="pt-2 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 rounded-xl p-4 border border-purple-200 dark:border-purple-800">
                     <h4 className="text-sm font-bold text-purple-900 dark:text-purple-300 mb-2 flex items-center gap-2">
                       <Lightbulb className="w-4 h-4" /> Strategic Verdict
                     </h4>
@@ -165,7 +165,7 @@ export default function CountryComparison() {
           </div>
 
           {/* Key Insights */}
-          <div className="mt-8 bg-linear-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-900/20 dark:via-indigo-900/20 dark:to-purple-900/20 rounded-2xl border-2 border-blue-200 dark:border-blue-800 p-8 shadow-xl transition-colors">
+          <div className="mt-8 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-900/20 dark:via-indigo-900/20 dark:to-purple-900/20 rounded-2xl border-2 border-blue-200 dark:border-blue-800 p-8 shadow-xl transition-colors">
             <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-2">
               <Lightbulb className="w-6 h-6" />
               Key Insights for Thai Students

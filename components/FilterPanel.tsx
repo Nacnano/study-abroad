@@ -83,7 +83,7 @@ export default function FilterPanel({
       <div className="overflow-y-auto px-6 py-4 flex-1">
         {/* Search */}
         <div className="mb-6">
-          <label className="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">
+          <label className="flex items-center gap-2 text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">
             <Search className="w-4 h-4" /> Search
           </label>
           <input
@@ -97,7 +97,7 @@ export default function FilterPanel({
 
         {/* Countries */}
         <div className="mb-6">
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+          <label className="block text-sm font-medium text-slate-800 dark:text-slate-200 mb-2">
             Countries ({selectedCountries.length})
           </label>
           <div className="space-y-2">
@@ -120,7 +120,7 @@ export default function FilterPanel({
                 />
                 <div className="ml-3 flex items-center gap-2 flex-1">
                   <CountryFlag country={country} width={20} />
-                  <span className="text-sm text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-slate-100">
+                  <span className="text-sm text-slate-800 dark:text-slate-200 group-hover:text-slate-900 dark:group-hover:text-slate-100">
                     {country}
                   </span>
                 </div>
@@ -131,7 +131,7 @@ export default function FilterPanel({
 
         {/* Priority */}
         <div className="mb-6">
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">
+          <label className="block text-sm font-medium text-slate-800 dark:text-slate-200 mb-3">
             Priority ({selectedPriorities.length})
           </label>
           <div className="space-y-2">
@@ -156,11 +156,11 @@ export default function FilterPanel({
                       }
                       className="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500"
                     />
-                    <span className="ml-2 text-sm font-medium text-slate-700 group-hover:text-slate-900 flex items-center gap-1">
+                    <span className="ml-2 text-sm font-medium text-slate-800 dark:text-slate-200 group-hover:text-slate-900 dark:group-hover:text-slate-100 flex items-center gap-1">
                       {config.icon} {priority}
                     </span>
                   </div>
-                  <span className="text-xs text-slate-500">
+                  <span className="text-xs text-slate-600 dark:text-slate-400">
                     {config.timeRange}
                   </span>
                 </label>
@@ -179,7 +179,7 @@ export default function FilterPanel({
 
         {/* Funding Type */}
         <div className="mb-6">
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+          <label className="block text-sm font-medium text-slate-800 dark:text-slate-200 mb-2">
             Funding Type ({selectedFundingTypes.length})
           </label>
           <div className="space-y-2">
@@ -200,7 +200,7 @@ export default function FilterPanel({
                   }
                   className="w-4 h-4 text-blue-600 border-slate-300 dark:border-slate-600 rounded focus:ring-blue-500 dark:focus:ring-blue-400 shrink-0 dark:bg-slate-700"
                 />
-                <span className="ml-3 text-sm text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-slate-100 wrap-break-word">
+                <span className="ml-3 text-sm text-slate-800 dark:text-slate-200 group-hover:text-slate-900 dark:group-hover:text-slate-100 wrap-break-word">
                   {type}
                 </span>
               </label>

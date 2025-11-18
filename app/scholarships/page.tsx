@@ -27,9 +27,9 @@ export default function ScholarshipsPage() {
   return (
     <>
       <Navigation />
-      <div className="min-h-screen bg-linear-to-br from-indigo-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors">
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors">
         {/* Header */}
-        <header className="relative bg-linear-to-rrom-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 text-white shadow-2xl overflow-hidden">
+        <header className="relative bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 text-white shadow-2xl overflow-hidden">
           <div className="absolute inset-0 bg-black/10 dark:bg-black/30"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <h1 className="text-4xl font-bold mb-2 drop-shadow-lg flex items-center gap-3">
@@ -81,7 +81,7 @@ export default function ScholarshipsPage() {
           {/* For Fresh Graduates */}
           <section className="mb-12">
             <div
-              className={`flex items-center gap-3 mb-6 p-4 bg-linear-to-r ${SCHOLARSHIP_SECTIONS.freshGrads.bgGradient} dark:from-emerald-900/30 dark:to-green-900/30 rounded-2xl border ${SCHOLARSHIP_SECTIONS.freshGrads.borderColor} dark:border-emerald-800`}
+              className={`flex items-center gap-3 mb-6 p-4 bg-gradient-to-r ${SCHOLARSHIP_SECTIONS.freshGrads.bgGradient} dark:from-emerald-900/30 dark:to-green-900/30 rounded-2xl border ${SCHOLARSHIP_SECTIONS.freshGrads.borderColor} dark:border-emerald-800`}
             >
               <GraduationCap className="w-10 h-10 text-emerald-700 dark:text-emerald-400" />
               <div>
@@ -104,7 +104,7 @@ export default function ScholarshipsPage() {
           {/* For Experienced Professionals */}
           <section>
             <div
-              className={`flex items-center gap-3 mb-6 p-4 bg-linear-to-r ${SCHOLARSHIP_SECTIONS.experienced.bgGradient} dark:from-blue-900/30 dark:to-indigo-900/30 rounded-2xl border ${SCHOLARSHIP_SECTIONS.experienced.borderColor} dark:border-blue-800`}
+              className={`flex items-center gap-3 mb-6 p-4 bg-gradient-to-r ${SCHOLARSHIP_SECTIONS.experienced.bgGradient} dark:from-blue-900/30 dark:to-indigo-900/30 rounded-2xl border ${SCHOLARSHIP_SECTIONS.experienced.borderColor} dark:border-blue-800`}
             >
               <Briefcase className="w-10 h-10 text-blue-700 dark:text-blue-400" />
               <div>
@@ -215,10 +215,10 @@ function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
           )}
         </div>
         <div className="flex items-center gap-2">
-          <span className="px-3 py-1.5 bg-linear-to-r from-blue-100 to-blue-200 text-blue-700 text-xs font-bold rounded-lg shadow-sm">
+          <span className="px-3 py-1.5 bg-gradient-to-r from-blue-100 to-blue-200 dark:from-blue-800 dark:to-blue-700 text-blue-700 dark:text-blue-200 text-xs font-bold rounded-lg shadow-sm">
             {scholarship.country}
           </span>
-          <span className="px-3 py-1.5 bg-linear-to-r from-slate-100 to-slate-200 text-slate-700 text-xs font-bold rounded-lg shadow-sm">
+          <span className="px-3 py-1.5 bg-gradient-to-r from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 text-slate-700 dark:text-slate-200 text-xs font-bold rounded-lg shadow-sm">
             {scholarship.targetDegree}
           </span>
         </div>

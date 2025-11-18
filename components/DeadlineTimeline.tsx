@@ -102,7 +102,7 @@ export default function DeadlineTimeline({
                 return (
                   <div
                     key={uni.id}
-                    className="p-5 bg-linear-to-r from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-600 rounded-xl border-2 border-slate-200 dark:border-slate-600 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+                    className="p-5 bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-600 rounded-xl border-2 border-slate-200 dark:border-slate-600 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
                   >
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
@@ -170,7 +170,7 @@ export default function DeadlineTimeline({
 
       {/* Legend */}
       <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700">
-        <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3 flex items-center gap-2">
+        <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
           <Target className="w-4 h-4" />
           Priority Calculation Guide
         </h4>

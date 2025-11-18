@@ -45,7 +45,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
   return (
     <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
       <div className="p-6 relative">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-brrom-blue-500/10 to-purple-500/10 dark:from-blue-500/5 dark:to-purple-500/5 rounded-bl-full"></div>
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-500/5 dark:to-purple-500/5 rounded-bl-full"></div>
         {/* Header */}
         <div className="flex items-start justify-between mb-4 relative z-10">
           <div className="flex-1">
@@ -67,7 +67,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
                   referrerPolicy="no-referrer"
                 />
               ) : (
-                <div className="w-12 h-12 rounded-lg border border-slate-200 dark:border-slate-700 bg-linear-to-br from-blue-50 to-purple-50 dark:from-slate-700 dark:to-slate-600 flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-lg border border-slate-200 dark:border-slate-700 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-700 dark:to-slate-600 flex items-center justify-center shrink-0">
                   <GraduationCap className="w-6 h-6 text-slate-400 dark:text-slate-300" />
                 </div>
               )}
@@ -112,7 +112,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
                   💰 {university.fundingType}
                 </span>
               )}
-              <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-linear-to-r from-slate-100 to-slate-200 text-slate-700 shadow-sm flex items-center gap-1.5">
+              <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 text-slate-700 dark:text-slate-200 shadow-sm flex items-center gap-1.5">
                 <CountryFlag country={university.country} width={20} />
                 {university.country}
               </span>
@@ -122,14 +122,14 @@ export default function UniversityCard({ university }: UniversityCardProps) {
 
         {/* Programs */}
         <div className="mb-4">
-          <h4 className="text-sm font-bold text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2">
+          <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2">
             <Target className="w-4 h-4" /> Programs
           </h4>
           <div className="flex flex-wrap gap-2">
             {university.programs.map((program, idx) => (
               <span
                 key={idx}
-                className="px-3 py-1.5 bg-linear-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 text-blue-700 dark:text-blue-300 rounded-lg text-sm font-medium border border-blue-200 dark:border-blue-700"
+                className="px-3 py-1.5 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 text-blue-700 dark:text-blue-300 rounded-lg text-sm font-medium border border-blue-200 dark:border-blue-700"
               >
                 {program}
               </span>
@@ -139,14 +139,14 @@ export default function UniversityCard({ university }: UniversityCardProps) {
 
         {/* Research Areas */}
         <div className="mb-4">
-          <h4 className="text-sm font-bold text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2">
+          <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2">
             <Microscope className="w-4 h-4" /> Research Areas
           </h4>
           <div className="flex flex-wrap gap-2">
             {university.researchAreas.map((area, idx) => (
               <span
                 key={idx}
-                className="px-3 py-1.5 bg-linear-to-r from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/30 text-purple-700 dark:text-purple-300 rounded-lg text-sm font-medium border border-purple-200 dark:border-purple-700"
+                className="px-3 py-1.5 bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/30 text-purple-700 dark:text-purple-300 rounded-lg text-sm font-medium border border-purple-200 dark:border-purple-700"
               >
                 {area}
               </span>
@@ -210,7 +210,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
 
         {/* Visa Info */}
         {university.visaType && (
-          <div className="mb-4 p-4 bg-linear-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-xl border border-indigo-200 dark:border-indigo-800">
+          <div className="mb-4 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-xl border border-indigo-200 dark:border-indigo-800">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-indigo-600 dark:text-indigo-400 font-bold mb-1 flex items-center gap-1">
@@ -235,7 +235,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
         {/* Toggle Button */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="w-full py-3 px-4 text-sm font-bold text-white bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-700 dark:to-purple-700 dark:hover:from-blue-800 dark:hover:to-purple-800 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-[1.02] flex items-center justify-center gap-2"
+          className="w-full py-3 px-4 text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-700 dark:to-purple-700 dark:hover:from-blue-800 dark:hover:to-purple-800 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-[1.02] flex items-center justify-center gap-2"
         >
           {isExpanded ? (
             <>
@@ -255,7 +255,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
           <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700 space-y-4">
             {/* GRE Requirement */}
             <div>
-              <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2">
+              <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2">
                 <FileText className="w-4 h-4" />
                 GRE Required?
               </h4>
@@ -266,7 +266,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
 
             {/* Key Documents */}
             <div>
-              <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2">
+              <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2">
                 <FileText className="w-4 h-4" />
                 Key Documents
               </h4>
@@ -274,9 +274,9 @@ export default function UniversityCard({ university }: UniversityCardProps) {
                 {university.keyDocuments.map((doc, idx) => (
                   <span
                     key={idx}
-                    className="px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded text-sm"
+                    className="px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200 rounded text-sm"
                   >
-                    {doc}
+                    {item}
                   </span>
                 ))}
               </div>
@@ -284,7 +284,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
 
             {/* Scholarships */}
             <div>
-              <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2">
+              <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2">
                 <Award className="w-4 h-4" />
                 University Scholarships
               </h4>
@@ -295,7 +295,7 @@ export default function UniversityCard({ university }: UniversityCardProps) {
 
             {/* Notes */}
             <div>
-              <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2">
+              <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2">
                 <AlertTriangle className="w-4 h-4" />
                 Important Notes
               </h4>
