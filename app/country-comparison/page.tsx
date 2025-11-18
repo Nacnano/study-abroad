@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { countryInfo } from "@/data/universities";
+import { countryInfo } from "@/data/countries";
 import Navigation from "@/components/Navigation";
 import { CountryFlag } from "@/components/CountryFlag";
 import {

@@ -1,6 +1,7 @@
 "use client";
 
-import { CountryInfo, University } from "@/types/university";
+import { University } from "@/types/university";
+import { CountryInfo } from "@/types/country";
 import { PRIORITY_CONFIG } from "@/constants/priorities";
 import { PRIORITIES } from "@/constants/ui";
 import { Filter, Search, X, Calendar, Info } from "lucide-react";

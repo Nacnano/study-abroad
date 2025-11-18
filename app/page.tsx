@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { universities, countryInfo } from "@/data/universities";
+import { universities } from "@/data/universities";
+import { countryInfo } from "@/data/countries";
 import UniversityCard from "@/components/UniversityCard";
 import FilterPanel from "@/components/FilterPanel";
 import StatsOverview from "@/components/StatsOverview";

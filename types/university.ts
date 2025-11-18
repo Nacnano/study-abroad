@@ -40,11 +40,3 @@ type Funding =
   | "Limited Funding (MS) / Fully Funded via MEXT (PhD applicants)";
 
 export type Priority = "High" | "Medium" | "Low";
-
-export interface CountryInfo {
-  name: string;
-  visaProgram: string;
-  visaDuration: string;
-  jobMarketOutlook: string;
-  strategicVerdict: string;
-}
