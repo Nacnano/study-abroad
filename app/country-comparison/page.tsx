@@ -81,7 +81,7 @@ export default function CountryComparison() {
                       className={
                         idx % 2 === 0
                           ? "bg-white dark:bg-slate-800"
-                          : "bg-slate-50 dark:bg-slate-750"
+                          : "bg-slate-50 dark:bg-slate-800/50"
                       }
                     >
                       <td className="px-6 py-4">
@@ -92,18 +92,18 @@ export default function CountryComparison() {
                           </span>
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">
+                      <td className="px-6 py-4 text-sm text-slate-800 dark:text-slate-200 font-medium">
                         {country.visaProgram}
                       </td>
                       <td className="px-6 py-4">
-                        <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 rounded text-sm font-medium">
+                        <span className="px-3 py-1.5 bg-blue-50 dark:bg-blue-900/40 text-blue-900 dark:text-blue-200 rounded-lg text-sm font-semibold border border-blue-300 dark:border-blue-700">
                           {country.visaDuration}
                         </span>
                       </td>
-                      <td className="px-6 py-4 text-sm text-slate-700 dark:text-slate-300 max-w-xs">
+                      <td className="px-6 py-4 text-sm text-slate-800 dark:text-slate-200 max-w-xs">
                         {country.jobMarketOutlook}
                       </td>
-                      <td className="px-6 py-4 text-sm text-slate-700 dark:text-slate-300 max-w-md">
+                      <td className="px-6 py-4 text-sm text-slate-800 dark:text-slate-200 max-w-md">
                         {country.strategicVerdict}
                       </td>
                     </tr>

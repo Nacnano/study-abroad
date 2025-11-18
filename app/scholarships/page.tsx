@@ -132,7 +132,7 @@ export default function ScholarshipsPage() {
             <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden transition-colors">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                  <thead className="bg-slate-50 dark:bg-slate-700 border-b border-slate-200 dark:border-slate-600">
+                  <thead className="bg-slate-50 dark:bg-slate-700 border-b-2 border-slate-300 dark:border-slate-600">
                     <tr>
                       {COMPARISON_COLUMNS.map((col) => (
                         <th
@@ -161,13 +161,13 @@ export default function ScholarshipsPage() {
                           className={
                             idx % 2 === 0
                               ? "bg-white dark:bg-slate-800"
-                              : "bg-slate-50 dark:bg-slate-750"
+                              : "bg-slate-50 dark:bg-slate-800/50"
                           }
                         >
                           <td className="px-4 py-3 font-medium text-slate-900 dark:text-slate-100">
                             {s.name}
                           </td>
-                          <td className="px-4 py-3 text-slate-700 dark:text-slate-300">
+                          <td className="px-4 py-3 text-slate-800 dark:text-slate-200 font-medium">
                             {s.country}
                           </td>
                           <td className="px-4 py-3 text-center">
@@ -180,8 +180,8 @@ export default function ScholarshipsPage() {
                               {returnReqCell.text}
                             </span>
                           </td>
-                          <td className="px-4 py-3 text-slate-700 dark:text-slate-300">
-                            <span className="text-xs">
+                          <td className="px-4 py-3 text-slate-800 dark:text-slate-200">
+                            <span className="text-xs font-medium">
                               {getBestForText(s.returnRequirement)}
                             </span>
                           </td>
@@ -209,16 +209,16 @@ function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
             {scholarship.name}
           </h3>
           {scholarship.returnRequirement && (
-            <span className="px-3 py-1 bg-red-100 text-red-700 text-xs font-bold rounded-full shadow-sm">
+            <span className="px-3 py-1 bg-red-50 text-red-900 border border-red-300 dark:bg-red-900/40 dark:text-red-200 dark:border-red-700 text-xs font-bold rounded-full shadow-sm">
               Return Required
             </span>
           )}
         </div>
         <div className="flex items-center gap-2">
-          <span className="px-3 py-1.5 bg-gradient-to-r from-blue-100 to-blue-200 dark:from-blue-800 dark:to-blue-700 text-blue-700 dark:text-blue-200 text-xs font-bold rounded-lg shadow-sm">
+          <span className="px-3 py-1.5 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-800 dark:to-blue-700 text-blue-900 dark:text-blue-200 text-xs font-bold rounded-lg shadow-sm border border-blue-300 dark:border-blue-700">
             {scholarship.country}
           </span>
-          <span className="px-3 py-1.5 bg-gradient-to-r from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 text-slate-700 dark:text-slate-200 text-xs font-bold rounded-lg shadow-sm">
+          <span className="px-3 py-1.5 bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-600 text-slate-900 dark:text-slate-200 text-xs font-bold rounded-lg shadow-sm border border-slate-300 dark:border-slate-600">
             {scholarship.targetDegree}
           </span>
         </div>
@@ -233,9 +233,9 @@ function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
           {scholarship.coverage.map((item, idx) => (
             <li
               key={idx}
-              className="text-sm text-slate-600 dark:text-slate-300 flex items-start gap-2"
+              className="text-sm text-slate-700 dark:text-slate-200 flex items-start gap-2"
             >
-              <Check className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
+              <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
               {item}
             </li>
           ))}
@@ -244,7 +244,7 @@ function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
 
       {/* Key Conditions */}
       <div className="mb-4">
-        <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2">
+        <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2">
           <FileText className="w-4 h-4" />
           Key Conditions
         </h4>
@@ -252,9 +252,9 @@ function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
           {scholarship.keyConditions.map((condition, idx) => (
             <li
               key={idx}
-              className="text-sm text-slate-600 dark:text-slate-300 flex items-start"
+              className="text-sm text-slate-700 dark:text-slate-200 flex items-start"
             >
-              <span className="text-slate-400 dark:text-slate-500 mr-2">•</span>
+              <span className="text-slate-500 dark:text-slate-400 mr-2">•</span>
               {condition}
             </li>
           ))}

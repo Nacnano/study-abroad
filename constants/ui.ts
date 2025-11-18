@@ -44,12 +44,13 @@ export const DEFAULT_COUNTRY_CODE = "un"; // United Nations flag as fallback
 // Funding type colors
 export const FUNDING_COLORS = {
   "Fully Funded":
-    "bg-emerald-100 text-emerald-900 dark:bg-emerald-900/40 dark:text-emerald-200",
+    "bg-emerald-50 text-emerald-900 border border-emerald-300 dark:bg-emerald-900/40 dark:text-emerald-200 dark:border-emerald-700",
   "Limited Funding":
-    "bg-amber-100 text-amber-900 dark:bg-amber-900/40 dark:text-amber-200",
+    "bg-amber-50 text-amber-900 border border-amber-300 dark:bg-amber-900/40 dark:text-amber-200 dark:border-amber-700",
   "Self-Funded":
-    "bg-rose-100 text-rose-900 dark:bg-rose-900/40 dark:text-rose-200",
-  Mixed: "bg-blue-100 text-blue-900 dark:bg-blue-900/40 dark:text-blue-200",
+    "bg-rose-50 text-rose-900 border border-rose-300 dark:bg-rose-900/40 dark:text-rose-200 dark:border-rose-700",
+  Mixed:
+    "bg-blue-50 text-blue-900 border border-blue-300 dark:bg-blue-900/40 dark:text-blue-200 dark:border-blue-700",
 } as const;
 
 /**
@@ -77,7 +78,7 @@ export function getFundingColor(fundingType: string): string {
   }
 
   // Default fallback
-  return "bg-slate-100 text-slate-900 dark:bg-slate-700 dark:text-slate-200";
+  return "bg-slate-50 text-slate-900 border border-slate-300 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600";
 }
 
 // Available countries for filtering
