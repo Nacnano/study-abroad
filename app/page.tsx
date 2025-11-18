@@ -58,10 +58,10 @@ export default function Home() {
   return (
     <>
       <Navigation />
-      <div className="min-h-screen bg-linear-to-br from-indigo-50 via-white to-purple-50">
+      <div className="min-h-screen bg-linear-to-br from-indigo-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors">
         {/* Header */}
-        <header className="relative bg-linear-to-r from-blue-600 to-purple-600 text-white shadow-2xl overflow-hidden">
-          <div className="absolute inset-0 bg-black/10"></div>
+        <header className="relative bg-linear-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 text-white shadow-2xl overflow-hidden">
+          <div className="absolute inset-0 bg-black/10 dark:bg-black/30"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -70,14 +70,14 @@ export default function Home() {
                   <h1 className="text-4xl font-bold mb-1 drop-shadow-lg">
                     AI/ML Graduate Programs
                   </h1>
-                  <p className="text-blue-100 text-lg">
+                  <p className="text-blue-100 dark:text-blue-200 text-lg">
                     Fall 2026-2027 • Strategic Guide for Thai Students
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setShowDeadlineTimeline(!showDeadlineTimeline)}
-                className="px-6 py-3 bg-white text-blue-600 rounded-xl hover:bg-blue-50 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2"
+                className="px-6 py-3 bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 rounded-xl hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2"
               >
                 {showDeadlineTimeline ? (
                   <>
@@ -124,7 +124,7 @@ export default function Home() {
               ) : (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-xl font-semibold text-slate-900">
+                    <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
                       {filteredUniversities.length}{" "}
                       {filteredUniversities.length === 1
                         ? "University"
@@ -133,11 +133,11 @@ export default function Home() {
                   </div>
 
                   {filteredUniversities.length === 0 ? (
-                    <div className="bg-white rounded-lg shadow-sm p-12 text-center">
-                      <p className="text-slate-500 text-lg">
+                    <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm p-12 text-center border dark:border-slate-700">
+                      <p className="text-slate-500 dark:text-slate-400 text-lg">
                         No universities match your criteria
                       </p>
-                      <p className="text-slate-400 mt-2">
+                      <p className="text-slate-400 dark:text-slate-500 mt-2">
                         Try adjusting your filters
                       </p>
                     </div>

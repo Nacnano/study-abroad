@@ -30,31 +30,31 @@ export default function StatsOverview({ universities }: StatsOverviewProps) {
         label="Total Universities"
         value={stats.total.toString()}
         icon={GraduationCap}
-        color="bg-blue-50 text-blue-700 border-blue-200"
+        color="bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800"
       />
       <StatCard
         label="High Priority"
         value={stats.highPriority.toString()}
         icon={Star}
-        color="bg-red-50 text-red-700 border-red-200"
+        color="bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800"
       />
       <StatCard
         label="Fully Funded"
         value={stats.fullyFunded.toString()}
         icon={DollarSign}
-        color="bg-emerald-50 text-emerald-700 border-emerald-200"
+        color="bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800"
       />
       <StatCard
         label="Countries"
         value={stats.countries.toString()}
         icon={Globe}
-        color="bg-purple-50 text-purple-700 border-purple-200"
+        color="bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800"
       />
       <StatCard
         label="Urgent (Nov-Dec)"
         value={upcomingDeadlines.toString()}
         icon={Clock}
-        color="bg-orange-50 text-orange-700 border-orange-200"
+        color="bg-orange-50 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-800"
       />
     </div>
   );
@@ -73,7 +73,7 @@ function StatCard({
 }) {
   return (
     <div
-      className={`bg-white rounded-lg shadow-sm border p-4 ${color} hover:shadow-md transition-shadow`}
+      className={`bg-white dark:bg-slate-800 rounded-lg shadow-sm border p-4 ${color} hover:shadow-md transition-all`}
     >
       <div className="flex items-center justify-between">
         <div>
