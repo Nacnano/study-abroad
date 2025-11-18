@@ -28,6 +28,7 @@ import {
   FileText,
   Award,
   AlertTriangle,
+  ExternalLink,
 } from "lucide-react";
 
 interface UniversityCardProps {
@@ -75,6 +76,17 @@ export default function UniversityCard({ university }: UniversityCardProps) {
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
                   {university.name}
                 </h3>
+                {university.website && (
+                  <a
+                    href={university.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium mt-1 hover:underline"
+                  >
+                    <ExternalLink className="w-3 h-3" />
+                    Visit Website
+                  </a>
+                )}
                 {university.qsRank && (
                   <div className="flex items-center gap-2 mt-1">
                     <span className="text-xs font-semibold text-amber-600 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
